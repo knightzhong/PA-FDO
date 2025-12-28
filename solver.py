@@ -6,11 +6,26 @@ class ConditionalFlowMatching:
         self.model = model.to(device)
         self.device = device
         
+    def compute_divergence(self, x_in, t, y_target, y_start, drop_mask=None):
+        """
+        利用 Hutchinson 估计器计算散度 div(v)
+        Trace(J) approx e^T J e
+        """
+        x_in = x_in.detach().requires_grad_(True)
+        epsilon = torch.randn_like(x_in)
+        
+        v_pred = self.model(x_in, t, y_target, y_start, drop_mask=drop_mask)
+        v_projected = torch.sum(v_pred * epsilon, dim=1)
+        
+        grad_x = torch.autograd.grad(v_projected, x_in, create_graph=True)[0]
+        div = torch.sum(grad_x * epsilon, dim=1)
+        
+        return div, v_pred
+
     def compute_loss(self, x_anchor, x_better, x_worse, y_better, y_worse, y_anchor):
         """
-        PA-FDO 核心训练逻辑
+        PA-FDO 核心训练逻辑: MSE + Flow-DPO
         """
-        # 数据上设备
         x_anchor = x_anchor.to(self.device)
         x_better = x_better.to(self.device)
         x_worse = x_worse.to(self.device)
@@ -19,129 +34,111 @@ class ConditionalFlowMatching:
         y_anchor = y_anchor.view(-1, 1).to(self.device)
         
         B = x_anchor.shape[0]
-        
-        # === 1. 构建流匹配路径 (Anchor -> Better) ===
-        # 我们希望流场将 Anchor 推向 Better
         t = torch.rand(B, 1, device=self.device)
         
-        # 线性插值路径
-        x_t = (1 - t) * x_anchor + t * x_better
-        
-        # 目标速度向量 (Flow Matching Target)
+        # === 1. 基础流匹配 (MSE) ===
+        x_t_better = (1 - t) * x_anchor + t * x_better
         u_t = x_better - x_anchor
-        
-        # CFG Mask (15% 概率丢弃条件)
         drop_mask = (torch.rand(B, 1, device=self.device) < 0.15)
         
-        # 预测速度
-        # 注意：这里的条件是 "Target Score" (y_better) 和 "Current Score" (y_anchor)
-        # 模型的 forward 参数需要和 models.py 一致：forward(x, t, y_high, y_low, mask)
-        v_pred = self.model(x_t, t, y_better, y_anchor, drop_mask=drop_mask)
-        
-        # === A. 基础流匹配损失 (MSE) ===
+        v_pred = self.model(x_t_better, t, y_better, y_anchor, drop_mask=drop_mask)
         loss_mse = torch.mean((v_pred - u_t) ** 2)
         
-        # === B. 偏好对齐损失 (Preference Alignment Loss) ===
-        # 核心思想：在 x_t 处，向量场应当更指向 Better，而远离 Worse
-        # 仅当 Triplet 有效时计算 (即 Better != Anchor 且 Worse != Anchor)
+        # === 2. 路径偏好损失 (Flow-DPO) ===
+        # 计算 Winner 和 Loser 路径在同一点 t 的散度
+        x_t_worse = (1 - t) * x_anchor + t * x_worse
         
-        # 计算方向向量
-        dir_better = x_better - x_anchor
-        dir_worse = x_worse - x_anchor
+        # 注意：计算 DPO 时通常关闭 drop_mask 以衡量条件流场
+        div_better, _ = self.compute_divergence(x_t_better, t, y_better, y_anchor)
+        div_worse, _ = self.compute_divergence(x_t_worse, t, y_worse, y_anchor)
         
-        # 为了数值稳定性，归一化方向向量
-        dir_better_norm = F.normalize(dir_better, p=2, dim=1)
-        dir_worse_norm = F.normalize(dir_worse, p=2, dim=1)
-        v_pred_norm = F.normalize(v_pred, p=2, dim=1)
+        # Loss: 让 Winner 收缩 (div < 0) 比 Loser 更强，或者 Loser 扩散 (div > 0)
+        # diff > 0 意味着 worse 的散度比 better 大 (符合预期)
+        diff = div_worse - div_better
+        loss_dpo = -torch.nn.functional.logsigmoid(1.0 * diff).mean()
         
-        # 计算余弦相似度
-        cos_better = torch.sum(v_pred_norm * dir_better_norm, dim=1)
-        cos_worse = torch.sum(v_pred_norm * dir_worse_norm, dim=1)
-        
-        # Mask: 只有当确实存在 better/worse 样本时才计算 Loss
-        # 如果 better == anchor (Identity), dir_better 为 0, 余弦无意义
-        has_better = (torch.norm(dir_better, p=2, dim=1) > 1e-4)
-        has_worse = (torch.norm(dir_worse, p=2, dim=1) > 1e-4)
-        valid_triplet = has_better & has_worse
-        
-        loss_pref = torch.tensor(0.0, device=self.device)
-        
-        if valid_triplet.any():
-            # Margin Loss or LogSigmoid
-            # 我们希望 cos_better > cos_worse
-            # diff = cos_better - cos_worse
-            # loss = -log(sigmoid(scale * diff))
-            scale = 10.0 # 温度系数
-            pref_obj = cos_better[valid_triplet] - cos_worse[valid_triplet]
-            loss_pref = -torch.log(torch.sigmoid(scale * pref_obj) + 1e-6).mean()
-            
-        # 总损失：MSE + lambda * Preference
-        # lambda 取 0.1 ~ 0.5 之间，既要生成准确，又要方向对
-        return loss_mse + 0.2 * loss_pref
+        return loss_mse + 0.1 * loss_dpo
 
     @torch.no_grad()
-    def sample(self, x_start, y_target, y_start, proxy=None, steps=100, cfg_scale=4.0, grad_scale=4.0):
+    def sample(self, x_start, y_target, y_start, 
+               proxy=None, 
+               centroid=None,          # 新增: 训练集质心
+               steps=100, 
+               cfg_scale=4.0, 
+               grad_scale=4.0, 
+               reg_scale=0.05):        # 新增: 回复力强度
         """
-        Uncertainty-Aware Sampling
+        Energy-Guided Sampling: CFG + Proxy Gradient + Manifold Restoration
         """
         self.model.eval()
         
         x_current = x_start.clone().to(self.device)
         y_target = y_target.to(self.device)
         y_start = y_start.to(self.device)
-        B = x_current.shape[0]
         
+        # 如果提供了质心，确保它在设备上
+        if centroid is not None:
+            centroid = centroid.to(self.device)
+            
+        B = x_current.shape[0]
         dt = 1.0 / steps
         
-        # 预定义 CFG Masks
         mask_uncond = torch.ones((B, 1), device=self.device, dtype=torch.bool)
         mask_cond = torch.zeros((B, 1), device=self.device, dtype=torch.bool)
         
-        # 如果有 Proxy，开启 Train 模式以启用 Dropout
         if proxy is not None:
-            proxy.train()
+            proxy.train() # 开启 Dropout
         
         for i in range(steps):
             t_val = i / steps
             t = torch.full((B, 1), t_val, device=self.device)
             
-            # === 1. 计算不确定性感知梯度 (Uncertainty-Aware Gradient) ===
+            # === A. 计算不确定性感知梯度 (Gradient Guidance) ===
             grad_final = torch.zeros_like(x_current)
             
             if proxy is not None and grad_scale > 0:
                 with torch.enable_grad():
                     x_in = x_current.detach().clone().requires_grad_(True)
                     
-                    # MC Dropout: 采样 5 次
+                    # MC Dropout Uncertainty
                     mc_preds = []
                     for _ in range(5):
                         mc_preds.append(proxy(x_in))
-                    mc_preds = torch.stack(mc_preds) # (5, B, 1)
+                    mc_preds = torch.stack(mc_preds)
                     
                     avg_score = mc_preds.mean(dim=0)
-                    uncertainty = mc_preds.std(dim=0) # (B, 1)
+                    uncertainty = mc_preds.std(dim=0)
                     
-                    # 计算梯度
                     grad = torch.autograd.grad(avg_score.sum(), x_in)[0]
                     
-                    # === 动态阻尼逻辑 ===
-                    # 1. 不确定性越高，权重越小 (exp(-sigma))
-                    # 2. t 越接近 1，梯度权重越小 (1-t)，防止破坏最终结构
-                    # 归一化 uncertainty: 简单的 trick，防止数值范围问题
-                    # 这里的 2.0 是敏感度系数
-                    damping_factor = torch.exp(-2.0 * uncertainty) * (1.0 - t_val)
-                    
-                    grad_final = grad * damping_factor * grad_scale
+                    # 动态阻尼: 不确定性高或接近终点时减小梯度干扰
+                    damping = torch.exp(-2.0 * uncertainty) * (1.0 - t_val)
+                    grad_final = grad * damping * grad_scale
             
-            # === 2. 计算 Flow Velocity (CFG) ===
+            # === B. 计算回复力 (Manifold Restoration) ===
+            # 防止样本飞出数据流形太远 (OOD)
+            # Force = - k * (x - centroid)
+            v_reg = torch.zeros_like(x_current)
+            if centroid is not None and reg_scale > 0:
+                # 假设数据已标准化，centroid 通常接近 0
+                # 这种拉力随距离线性增加
+                dist_vec = x_current - centroid
+                v_reg = - dist_vec * reg_scale
+                
+                # 可选：随时间 t 增加拉力，确保终点不发散？
+                # 或者随时间 t 减小拉力，允许探索？
+                # 这里我们保持恒定，作为背景场
+            
+            # === C. 计算流速度 (CFG) ===
             with torch.no_grad():
                 v_cond = self.model(x_current, t, y_target, y_start, drop_mask=mask_cond)
                 v_uncond = self.model(x_current, t, y_target, y_start, drop_mask=mask_uncond)
                 
                 v_flow = v_uncond + cfg_scale * (v_cond - v_uncond)
             
-            # === 3. 混合更新 (Euler Step) ===
-            v_total = v_flow + grad_final
+            # === D. 欧拉积分 ===
+            # Total Velocity = Flow + Gradient + Restoration
+            v_total = v_flow + grad_final + v_reg
             x_current = x_current + v_total * dt
             
         return x_current
