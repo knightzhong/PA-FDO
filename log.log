@@ -1,0 +1,185 @@
+nohup: 忽略输入
+Detected Discrete Task: TFBind8-Exact-v0. Applying One-Hot + Dequantization.
+Data Loaded: Input Dim=32 | Total 32898 | Gold 3289
+
+Training RankProxy with ListNet Loss (RaM Strategy)...
+RaM-ListNet Epoch 20/2000 | Loss: 6.1816 | Pred Std: 0.6373
+RaM-ListNet Epoch 40/2000 | Loss: 6.1755 | Pred Std: 0.5980
+RaM-ListNet Epoch 60/2000 | Loss: 6.1944 | Pred Std: 0.5684
+RaM-ListNet Epoch 80/2000 | Loss: 6.0300 | Pred Std: 0.5934
+RaM-ListNet Epoch 100/2000 | Loss: 5.9339 | Pred Std: 0.6875
+RaM-ListNet Epoch 120/2000 | Loss: 5.9024 | Pred Std: 0.7563
+RaM-ListNet Epoch 140/2000 | Loss: 6.0598 | Pred Std: 0.7545
+RaM-ListNet Epoch 160/2000 | Loss: 6.0349 | Pred Std: 0.6345
+RaM-ListNet Epoch 180/2000 | Loss: 5.8782 | Pred Std: 0.7337
+RaM-ListNet Epoch 200/2000 | Loss: 6.1177 | Pred Std: 0.7485
+RaM-ListNet Epoch 220/2000 | Loss: 5.8930 | Pred Std: 0.7698
+RaM-ListNet Epoch 240/2000 | Loss: 5.9338 | Pred Std: 0.7393
+RaM-ListNet Epoch 260/2000 | Loss: 5.8904 | Pred Std: 0.7883
+RaM-ListNet Epoch 280/2000 | Loss: 6.0421 | Pred Std: 0.7353
+RaM-ListNet Epoch 300/2000 | Loss: 5.9043 | Pred Std: 0.8160
+RaM-ListNet Epoch 320/2000 | Loss: 6.1264 | Pred Std: 0.8362
+RaM-ListNet Epoch 340/2000 | Loss: 5.8371 | Pred Std: 0.7681
+RaM-ListNet Epoch 360/2000 | Loss: 5.8989 | Pred Std: 0.7685
+RaM-ListNet Epoch 380/2000 | Loss: 5.9955 | Pred Std: 0.8620
+RaM-ListNet Epoch 400/2000 | Loss: 6.0759 | Pred Std: 0.8125
+RaM-ListNet Epoch 420/2000 | Loss: 6.1026 | Pred Std: 0.7791
+RaM-ListNet Epoch 440/2000 | Loss: 6.0795 | Pred Std: 0.8287
+RaM-ListNet Epoch 460/2000 | Loss: 5.9603 | Pred Std: 0.8182
+RaM-ListNet Epoch 480/2000 | Loss: 6.0390 | Pred Std: 0.8011
+RaM-ListNet Epoch 500/2000 | Loss: 5.9581 | Pred Std: 0.7830
+RaM-ListNet Epoch 520/2000 | Loss: 5.9439 | Pred Std: 0.7895
+RaM-ListNet Epoch 540/2000 | Loss: 5.8832 | Pred Std: 0.8201
+RaM-ListNet Epoch 560/2000 | Loss: 5.8852 | Pred Std: 0.8088
+RaM-ListNet Epoch 580/2000 | Loss: 5.7051 | Pred Std: 0.8454
+RaM-ListNet Epoch 600/2000 | Loss: 5.9163 | Pred Std: 0.8168
+RaM-ListNet Epoch 620/2000 | Loss: 5.8661 | Pred Std: 0.8726
+RaM-ListNet Epoch 640/2000 | Loss: 5.9566 | Pred Std: 0.8499
+RaM-ListNet Epoch 660/2000 | Loss: 5.8462 | Pred Std: 0.9074
+RaM-ListNet Epoch 680/2000 | Loss: 6.0222 | Pred Std: 0.8733
+RaM-ListNet Epoch 700/2000 | Loss: 5.7288 | Pred Std: 0.7841
+RaM-ListNet Epoch 720/2000 | Loss: 5.7857 | Pred Std: 0.8529
+RaM-ListNet Epoch 740/2000 | Loss: 5.8355 | Pred Std: 0.8886
+RaM-ListNet Epoch 760/2000 | Loss: 5.8916 | Pred Std: 0.9499
+RaM-ListNet Epoch 780/2000 | Loss: 5.6904 | Pred Std: 0.8774
+RaM-ListNet Epoch 800/2000 | Loss: 5.7807 | Pred Std: 0.9497
+RaM-ListNet Epoch 820/2000 | Loss: 5.7672 | Pred Std: 0.8442
+RaM-ListNet Epoch 840/2000 | Loss: 5.7509 | Pred Std: 0.8861
+RaM-ListNet Epoch 860/2000 | Loss: 5.8764 | Pred Std: 0.9137
+RaM-ListNet Epoch 880/2000 | Loss: 5.6093 | Pred Std: 0.9078
+RaM-ListNet Epoch 900/2000 | Loss: 5.9191 | Pred Std: 0.8420
+RaM-ListNet Epoch 920/2000 | Loss: 5.8472 | Pred Std: 0.8653
+RaM-ListNet Epoch 940/2000 | Loss: 6.0540 | Pred Std: 0.8804
+RaM-ListNet Epoch 960/2000 | Loss: 5.6989 | Pred Std: 0.9491
+RaM-ListNet Epoch 980/2000 | Loss: 5.9571 | Pred Std: 0.9287
+RaM-ListNet Epoch 1000/2000 | Loss: 5.8374 | Pred Std: 0.8850
+RaM-ListNet Epoch 1020/2000 | Loss: 5.8464 | Pred Std: 0.9285
+RaM-ListNet Epoch 1040/2000 | Loss: 5.7314 | Pred Std: 0.9917
+RaM-ListNet Epoch 1060/2000 | Loss: 5.6151 | Pred Std: 0.9472
+RaM-ListNet Epoch 1080/2000 | Loss: 5.5949 | Pred Std: 0.8874
+RaM-ListNet Epoch 1100/2000 | Loss: 5.9623 | Pred Std: 0.9147
+RaM-ListNet Epoch 1120/2000 | Loss: 5.7621 | Pred Std: 0.8713
+RaM-ListNet Epoch 1140/2000 | Loss: 5.5771 | Pred Std: 0.9272
+RaM-ListNet Epoch 1160/2000 | Loss: 5.8692 | Pred Std: 0.9668
+RaM-ListNet Epoch 1180/2000 | Loss: 5.8307 | Pred Std: 0.9493
+RaM-ListNet Epoch 1200/2000 | Loss: 5.8568 | Pred Std: 0.9026
+RaM-ListNet Epoch 1220/2000 | Loss: 5.6895 | Pred Std: 0.9123
+RaM-ListNet Epoch 1240/2000 | Loss: 5.8118 | Pred Std: 0.9769
+RaM-ListNet Epoch 1260/2000 | Loss: 5.6470 | Pred Std: 0.8895
+RaM-ListNet Epoch 1280/2000 | Loss: 5.7854 | Pred Std: 1.0076
+RaM-ListNet Epoch 1300/2000 | Loss: 5.9144 | Pred Std: 0.9167
+RaM-ListNet Epoch 1320/2000 | Loss: 5.9924 | Pred Std: 0.9020
+RaM-ListNet Epoch 1340/2000 | Loss: 5.8598 | Pred Std: 1.0289
+RaM-ListNet Epoch 1360/2000 | Loss: 5.6969 | Pred Std: 0.9498
+RaM-ListNet Epoch 1380/2000 | Loss: 5.6840 | Pred Std: 0.9719
+RaM-ListNet Epoch 1400/2000 | Loss: 5.7879 | Pred Std: 0.9107
+RaM-ListNet Epoch 1420/2000 | Loss: 5.6858 | Pred Std: 1.0321
+RaM-ListNet Epoch 1440/2000 | Loss: 5.7508 | Pred Std: 0.9154
+RaM-ListNet Epoch 1460/2000 | Loss: 5.7579 | Pred Std: 0.9360
+RaM-ListNet Epoch 1480/2000 | Loss: 5.8025 | Pred Std: 0.8999
+RaM-ListNet Epoch 1500/2000 | Loss: 5.7584 | Pred Std: 1.0317
+RaM-ListNet Epoch 1520/2000 | Loss: 6.0796 | Pred Std: 0.9828
+RaM-ListNet Epoch 1540/2000 | Loss: 5.5229 | Pred Std: 0.9780
+RaM-ListNet Epoch 1560/2000 | Loss: 5.5998 | Pred Std: 1.0555
+RaM-ListNet Epoch 1580/2000 | Loss: 5.7892 | Pred Std: 0.9383
+RaM-ListNet Epoch 1600/2000 | Loss: 5.7635 | Pred Std: 0.9358
+RaM-ListNet Epoch 1620/2000 | Loss: 5.6067 | Pred Std: 1.0290
+RaM-ListNet Epoch 1640/2000 | Loss: 5.6671 | Pred Std: 0.9833
+RaM-ListNet Epoch 1660/2000 | Loss: 5.6431 | Pred Std: 1.1026
+RaM-ListNet Epoch 1680/2000 | Loss: 5.8139 | Pred Std: 0.9145
+RaM-ListNet Epoch 1700/2000 | Loss: 5.7140 | Pred Std: 1.0770
+RaM-ListNet Epoch 1720/2000 | Loss: 5.7029 | Pred Std: 0.9831
+RaM-ListNet Epoch 1740/2000 | Loss: 5.8057 | Pred Std: 1.0002
+RaM-ListNet Epoch 1760/2000 | Loss: 5.5140 | Pred Std: 0.9803
+RaM-ListNet Epoch 1780/2000 | Loss: 5.8836 | Pred Std: 1.0108
+RaM-ListNet Epoch 1800/2000 | Loss: 5.7429 | Pred Std: 0.9683
+RaM-ListNet Epoch 1820/2000 | Loss: 5.7447 | Pred Std: 0.9588
+RaM-ListNet Epoch 1840/2000 | Loss: 5.5775 | Pred Std: 1.0299
+RaM-ListNet Epoch 1860/2000 | Loss: 5.7426 | Pred Std: 1.0864
+RaM-ListNet Epoch 1880/2000 | Loss: 5.7942 | Pred Std: 0.9238
+RaM-ListNet Epoch 1900/2000 | Loss: 5.7520 | Pred Std: 1.0184
+RaM-ListNet Epoch 1920/2000 | Loss: 5.5741 | Pred Std: 0.9773
+RaM-ListNet Epoch 1940/2000 | Loss: 5.6177 | Pred Std: 0.9986
+RaM-ListNet Epoch 1960/2000 | Loss: 5.7146 | Pred Std: 0.9610
+RaM-ListNet Epoch 1980/2000 | Loss: 5.5339 | Pred Std: 1.0675
+RaM-ListNet Epoch 2000/2000 | Loss: 5.6194 | Pred Std: 0.9888
+
+Training Flow Model (PA-FDO Dynamic)...
+
+[Check Training Data] y_anc mean: 0.0384 | min: -3.4211 | max: 1.4793
+Step 500/5000 | Loss: 0.6921
+Step 1000/5000 | Loss: 0.6447
+Step 1500/5000 | Loss: 0.5864
+Step 2000/5000 | Loss: 0.5244
+Step 2500/5000 | Loss: 0.5040
+Step 3000/5000 | Loss: 0.4904
+Step 3500/5000 | Loss: 0.4848
+Step 4000/5000 | Loss: 0.4640
+Step 4500/5000 | Loss: 0.4208
+Step 5000/5000 | Loss: 0.4056
+
+Running Evaluation with Energy-based Guidance...
+[Info] Clamped Targets: Max=1.5742
+
+[Debug] Start Sampling. X Range: [-1.03, 2.30]
+[Debug] Y_Target Stats: Mean=1.4800 | Min=1.3398 | Max=1.5742
+[Debug] Y_Start  Stats: Mean=0.6475  | Min=0.1473 | Max=1.1970
+[Step 0] X_max: 2.30 | Flow: 126.12 | Grad: 4.57 | Reg: 3.22
+    -> Warning: Velocity Explosion detected at Step 0!
+[Step 10] X_max: 6.58 | Flow: 314.14 | Grad: 4.19 | Reg: 3.36
+    -> Warning: Velocity Explosion detected at Step 10!
+[Step 20] X_max: 16.12 | Flow: 538.28 | Grad: 3.64 | Reg: 4.46
+    -> Warning: Velocity Explosion detected at Step 20!
+[Step 30] X_max: 31.77 | Flow: 844.13 | Grad: 3.19 | Reg: 7.14
+    -> Warning: Velocity Explosion detected at Step 30!
+[Step 40] X_max: 58.85 | Flow: 1682.35 | Grad: 2.68 | Reg: 12.33
+    -> Warning: Velocity Explosion detected at Step 40!
+[Step 50] X_max: 126.27 | Flow: 4583.88 | Grad: 2.22 | Reg: 25.12
+    -> Warning: Velocity Explosion detected at Step 50!
+[Step 60] X_max: 338.87 | Flow: 15203.44 | Grad: 1.73 | Reg: 64.98
+    -> Warning: Velocity Explosion detected at Step 60!
+[Step 70] X_max: 1292.34 | Flow: 55035.73 | Grad: 1.27 | Reg: 207.11
+    -> Warning: Velocity Explosion detected at Step 70!
+[Step 80] X_max: 4971.17 | Flow: 205977.06 | Grad: 0.85 | Reg: 737.29
+    -> Warning: Velocity Explosion detected at Step 80!
+[Step 90] X_max: 19235.72 | Flow: 781874.44 | Grad: 0.40 | Reg: 2743.81
+    -> Warning: Velocity Explosion detected at Step 90!
+tensor([[ 9.7276e-01,  9.0001e-02, -7.3009e-02,  ...,  7.5821e-02,
+          9.6286e-01, -6.6241e-03],
+        [ 1.0818e+00,  1.3774e-01, -2.3514e-01,  ...,  6.3437e-01,
+          8.9167e-02,  1.3453e-01],
+        [ 9.0261e-01,  5.4373e-02,  6.2946e-02,  ..., -2.1900e-02,
+          8.6011e-01,  1.3487e-01],
+        ...,
+        [-7.1731e-01, -5.7979e+00,  9.3366e+00,  ...,  1.0134e+00,
+         -1.4809e+00,  3.1637e+00],
+        [ 1.0579e+00, -8.6784e-01, -8.3822e-02,  ..., -7.5508e-01,
+         -1.1329e+00,  1.5919e+00],
+        [ 2.1482e-02,  8.5135e-01,  2.4434e-02,  ...,  7.9591e-01,
+          8.2924e-02, -2.3506e-02]])
+[0.54326266 0.3820455  0.3827877  0.20022266 0.33994764 0.36750093
+ 0.3535542  0.61988205 0.2516905  0.39004454 0.41284582 0.4022286
+ 0.25467983 0.39215767 0.3825609  0.42432895 0.2516905  0.19737764
+ 0.39707458 0.39984745 0.12638643 0.37552056 0.2516905  0.59207106
+ 0.3380819  0.548829   0.32110462 0.36611965 0.39081764 0.39059085
+ 0.37394342 0.2516905  0.2516905  0.3718406  0.4147425  0.33710262
+ 0.5795778  0.20022266 0.36714014 0.35520348 0.4704882  0.38157135
+ 0.2516905  0.2801406  0.2516905  0.34448317 0.39367294 0.2516905
+ 0.36933574 0.3691193  0.40486744 0.37486085 0.33766958 0.3603781
+ 0.37719044 0.39369357 0.4223086  0.45327383 0.40229043 0.2516905
+ 0.40030098 0.2516905  0.41376325 0.3746753  0.2516905  0.34049395
+ 0.2516905  0.3722323  0.37873664 0.67840064 0.7588133  0.37873664
+ 0.76617324 0.33740157 0.32695955 0.39609534 0.33921576 0.20022266
+ 0.33827773 0.4533666  0.20022266 0.40846494 0.34784356 0.37079948
+ 0.33752525 0.2154785  0.34536964 0.2516905  0.2439389  0.37873664
+ 0.36201707 0.41709274 0.24483569 0.4308127  0.47637406 0.34833834
+ 0.395549   0.31255928 0.3575434  0.50428814 0.4079186  0.69762504
+ 0.39597163 0.2516905  0.2516905  0.39737353 0.34411207 0.38382882
+ 0.38245785 0.35134828 0.38297325 0.40527976 0.3708098  0.41218612
+ 0.34065887 0.38102502 0.34935886 0.29951966 0.3370923  0.2516905
+ 0.9323898  0.2516905  0.37946853 0.38530284 0.2516905  0.7634313
+ 0.79473674 0.37619057]
+------------------------------
+Result (Valid 128): Mean 0.8079
+Percentiles (100/80/50): 0.9047 | 0.8134 | 0.8071
+------------------------------

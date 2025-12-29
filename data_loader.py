@@ -58,36 +58,60 @@ from torch.utils.data import DataLoader, TensorDataset
 
 def build_dynamic_loader(cfg):
     """
-    构建动态数据池，而非静态 DataLoader。
-    返回:
-        task: 任务对象
-        dataset_all: 包含所有 (x, y) 的 TensorDataset
-        dataset_gold: 仅包含 Top K% 高分 (x, y) 的 TensorDataset
-        stats: (mean_x, std_x, mean_y, std_y)
+    构建动态数据池 (修复了离散数据 X 处理 + Y 标准化)
     """
     import design_bench
+    import torch.nn.functional as F
+    
     task = design_bench.make(cfg.TASK_NAME)
     
-    # 1. 获取离线数据
-    x = task.x
+    # === 1. 处理 X (输入) - 区分离散和连续 ===
+    if task.is_discrete:
+        print(f"Detected Discrete Task: {cfg.TASK_NAME}. Applying One-Hot + Dequantization.")
+        # 原始数据通常是 (N, L) 的整数索引
+        raw_x = task.x
+        if raw_x.ndim == 3: raw_x = raw_x.squeeze(-1)
+        
+        # 1. 转 Long Tensor
+        x_indices = torch.tensor(raw_x, dtype=torch.long)
+        
+        # 2. One-Hot 编码 (N, L, 4) -> 扩展维度
+        # 注意: 这里假设 Vocab=4 (DNA), 如果是其他任务可能不同，但 DesignBench TFBind 都是 4
+        vocab_size = 4 
+        x_onehot = F.one_hot(x_indices, num_classes=vocab_size).float()
+        
+        # 3. Dequantization (去量化): 核心步骤！
+        # 给离散的 0/1 加上微小的噪声，使其变成连续分布，适合 Flow Matching 训练
+        # 这样模型就能在连续空间里学习流场了
+        noise = 0.05 * torch.randn_like(x_onehot)
+        x_continuous = x_onehot + noise
+        
+        # 4. Flatten 平铺 (N, L*4)
+        x = x_continuous.view(x_continuous.shape[0], -1).numpy()
+        
+    else:
+        # 连续任务 (如 AntMorphology) 直接用
+        x = task.x
+
     y = task.y
     
-    # 2. 标准化
+    # === 2. X 标准化 (Global Z-Score) ===
+    # 即使是 One-Hot+Noise，也建议做一次标准化让均值为0，方差为1，配合神经网络初始化
     mean_x = np.mean(x, axis=0)
     std_x = np.std(x, axis=0) + 1e-8
     x = (x - mean_x) / std_x
     
-    # y 不做标准化，保持真实物理意义，或者仅做简单归一化供 Proxy 使用
-    # 这里我们记录统计量，但 dataset 里存原始值方便比较
+    # === 3. Y 标准化 (Normalize Y) ===
+    # 这一步是为了解决之前的 Flow 爆炸问题
     mean_y = np.mean(y, axis=0)
     std_y = np.std(y, axis=0) + 1e-8
+    y = (y - mean_y) / std_y
     
     # 转 Tensor
     x_tensor = torch.from_numpy(x).float()
     y_tensor = torch.from_numpy(y).float()
     
-    # 3. 构建高分池 (Top 10%)
-    # 动态配对的核心：我们希望流向这些高分区域
+    # === 4. 构建高分池 ===
     y_flat = y_tensor.view(-1)
     k = int(len(y_flat) * 0.1) # Top 10%
     topk_vals, topk_indices = torch.topk(y_flat, k)
@@ -95,7 +119,7 @@ def build_dynamic_loader(cfg):
     x_gold = x_tensor[topk_indices]
     y_gold = y_tensor[topk_indices]
     
-    print(f"Data Loaded: Total {len(x_tensor)} | Gold Pool {len(x_gold)} (Min Score: {topk_vals.min():.4f})")
+    print(f"Data Loaded: Input Dim={x.shape[1]} | Total {len(x_tensor)} | Gold {len(x_gold)}")
     
     dataset_all = TensorDataset(x_tensor, y_tensor)
     dataset_gold = TensorDataset(x_gold, y_gold)

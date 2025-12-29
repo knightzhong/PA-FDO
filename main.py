@@ -65,23 +65,67 @@ def main():
     iter_gold = cycle(loader_gold)
     
     # ==========================================
-    # Part A: 训练 RankProxy (ListNet) - 保持不变
+    # Part A: 训练 ListNet Proxy (ICLR 2025 Strategy)
     # ==========================================
-    print("\nTraining RankProxy...")
-    # ... (此处省略 RankProxy 训练代码，与之前完全一致，请保留之前的 Proxy 训练逻辑) ...
-    # 为了节省篇幅，我直接实例化并加载一个假设训练好的 Proxy
-    # 在实际运行中，请保留你之前的 Proxy 训练代码块
+    print("\nTraining RankProxy with ListNet Loss (RaM Strategy)...")
     
-    # --- 临时模拟 Proxy 训练代码块 (请替换回你的完整代码) ---
+    # 1. 初始化
     proxy = RankProxy(input_dim=input_dim).to(cfg.DEVICE)
-    proxy_opt = torch.optim.AdamW(proxy.parameters(), lr=1e-4)
-    # 简单训练一下防止报错
-    temp_x = ds_all.tensors[0][:100].to(cfg.DEVICE)
-    for _ in range(10): 
-        loss = proxy(temp_x).mean()
+    proxy_opt = torch.optim.AdamW(proxy.parameters(), lr=1e-4, weight_decay=1e-5) # 论文参数
+    
+    def listnet_loss(y_pred, y_true, temp=1.0):
+        # ---------------------------------------------------------
+        # 关键修改：给 y_true 除以一个小的温度系数 (tau)
+        # 这会拉大高分和低分的差距，让 Target 分布更尖锐
+        # ---------------------------------------------------------
+        tau = 0.1  # <--- 建议尝试 0.1 或 0.05
+        
+        # 预测值的温度可以保持 1.0，或者也设为 tau，通常只锐化 Target 效果就很好
+        pred_temp = 1.0 
+        
+        # 计算 Log Softmax (预测)
+        p_y_pred = F.log_softmax(y_pred.t() / pred_temp, dim=1)
+        
+        # 计算 Softmax (真实标签)，除以 tau 进行锐化
+        # 比如 y_true=[2.0, 1.0], tau=0.1 -> [20, 10] -> Softmax 差距巨大
+        p_y_true = F.softmax(y_true.t() / tau, dim=1)
+        
+        return -torch.sum(p_y_true * p_y_pred)
+
+    # 准备全量数据
+    all_x = ds_all.tensors[0].to(cfg.DEVICE)
+    all_y = ds_all.tensors[1].to(cfg.DEVICE).view(-1, 1)
+    num_samples = all_x.shape[0]
+    
+    # 3. Listwise 训练循环
+    # 论文建议 List Length (Batch Size) m=100 或 1000
+    list_size = 512 
+    
+    for epoch in range(2000):
+        proxy.train()
+        proxy_opt.zero_grad()
+        
+        # === Data Augmentation: 随机采样形成 List ===
+        # 每次迭代都重新采样，相当于无限的数据增强
+        idx = torch.randperm(num_samples)[:list_size]
+        x_batch = all_x[idx]
+        y_batch = all_y[idx]
+        
+        # === Forward ===
+        y_pred = proxy(x_batch)
+        
+        # === ListNet Loss ===
+        # 温度 temp=1.0 是标准设定，如果想要更sharp的分布可以调小
+        loss = listnet_loss(y_pred, y_batch)
+        
         loss.backward()
         proxy_opt.step()
-    # ----------------------------------------------------
+        
+        if (epoch + 1) % 20 == 0:
+            pred_std = y_pred.std().item()
+            print(f"RaM-ListNet Epoch {epoch+1}/2000 | Loss: {loss.item():.4f} | Pred Std: {pred_std:.4f}")
+            # 如果 Pred Std 一直很小 (< 0.01)，说明输出还没拉开差距
+
 
     # Proxy Wrapper
     proxy.eval()
@@ -122,7 +166,11 @@ def main():
         x_anc, y_anc = next(iter_all)
         x_anc = x_anc.to(cfg.DEVICE)
         y_anc = y_anc.view(-1, 1).to(cfg.DEVICE)
-        
+        # 🚨【诊断插桩】🚨：请添加这行打印，看一眼训练时的 Y 到底是多少！
+        if step == 0:
+            print(f"\n[Check Training Data] y_anc mean: {y_anc.mean().item():.4f} | min: {y_anc.min().item():.4f} | max: {y_anc.max().item():.4f}")
+            # 如果这里打印出 -5.0 或 -10.0 这种奇怪的负数，说明 Data Loader 可能没改对，或者 Dataset 被重复处理了
+            # 正常应该是 0.0 附近 (比如 -1.5 到 1.5)
         # 2. 采样 Candidates (潜在终点 - 真实高分数据)
         x_gold, y_gold = next(iter_gold)
         x_gold = x_gold.to(cfg.DEVICE)
@@ -149,7 +197,7 @@ def main():
             # Proxy 打分
             score_attempt = norm_proxy(x_attempt)
             # 原始分
-            score_anc = norm_proxy(x_anc)
+            # score_anc = norm_proxy(x_anc)
             
             # 定义 "Worse": 如果生成的点分数没有显著提高，甚至降低了，就把它当负样本
             # 或者简单粗暴：直接把尝试生成的点当作 worse，迫使模型去寻找比当前尝试“更好”的路径（DPO 逻辑）
@@ -202,21 +250,27 @@ def main():
     x_starts = ds_all.tensors[0][selected_indices].to(cfg.DEVICE)
     y_starts = ds_all.tensors[1][selected_indices].view(-1, 1).to(cfg.DEVICE)
     
-    # 3. 构造动态目标梯度带 (Dynamic Target Band)
-    # 设计：不要让所有点都去同一个极值。
-    # 而是构建一个分布：N(mu=max*1.1, sigma=scale)
-    # 这样可以形成一个“宽广的吸引场”，增加生成多样性
+    # 2. 构造目标 (Target) - 【修改这里】
+    # 获取训练集见过的最大值 (约 1.47)
     y_max = ds_all.tensors[1].max().item()
     
-    # 基础目标: Max * 1.1
-    base_target = y_max * 1.1
-    # 引入随机扰动，有些点目标更高，有些稍低
-    target_noise = torch.randn_like(y_starts) * (y_max * 0.05) 
+    # === 核心修改：克制贪婪 ===
+    # 设定目标为“训练集最大值”。这已经是极好的结果了。
+    base_target = y_max 
+    
+    # 只加非常微小的扰动 (0.05)
+    target_noise = torch.randn_like(y_starts) * 0.05
     y_targets = base_target + target_noise
     
-    # 确保目标至少比起点高
-    y_targets = torch.maximum(y_targets, y_starts * 1.05)
+    # 【强制截断】：绝对不允许目标超过 y_max + 0.2
+    # 这样就把输入限制在了模型勉强能泛化的边缘，而不是 2.17 这种深渊
+    y_targets = torch.clamp(y_targets, max=y_max + 0.2)
     
+    # 同时也确保目标不比起点低
+    y_targets = torch.maximum(y_targets, y_starts + 0.1)
+    
+    # 打印一下确认，修改后这里的 Max 应该在 1.5-1.6 左右，绝不能是 2.0+
+    print(f"[Info] Clamped Targets: Max={y_targets.max().item():.4f}")
     # 4. 执行采样
     x_final = cfm.sample(
         x_starts, 
@@ -225,14 +279,16 @@ def main():
         proxy=norm_proxy,
         centroid=centroid,   # 传入质心
         steps=cfg.ODE_STEPS,
-        cfg_scale=4.0,       # 保持强 CFG
-        grad_scale=4.0,      # 保持强 Proxy Guidance
-        reg_scale=0.05       # 能量回复力系数 (防止 OOD)
+        # === 参数大降级 ===
+        # 之前是 4.0，太强了，导致一点点误差就被放大成灾难
+        cfg_scale=2.0,   # 先设 1.0 (标准流场)，稳了再加到 1.5, 2.0
+        grad_scale=0.5,  # 之前是 60 的梯度，太吓人。降到 0.5 试试
+        reg_scale=0.05   # 保持不变
     )
     
     # 5. 反标准化与评估
     x_denorm = x_final.cpu() * std_x.cpu() + mean_x.cpu()
-    
+    print(x_denorm)
     # Oracle 评估
     if hasattr(task, 'predict'):
         if task.is_discrete:
@@ -247,6 +303,7 @@ def main():
             scores = task.predict(x_denorm.numpy())
             
         scores = scores.reshape(-1)
+        print(scores)
         
         # 归一化分数 (0-100th)
         y_min_val = ds_all.tensors[1].min().item()
