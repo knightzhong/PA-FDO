@@ -306,9 +306,13 @@ def main():
         print(scores)
         
         # 归一化分数 (0-100th)
-        y_min_val = ds_all.tensors[1].min().item()
-        y_max_val = ds_all.tensors[1].max().item()
-        norm_scores = (scores - y_min_val) / (y_max_val - y_min_val)
+        task_to_min = {'TFBind8-Exact-v0': 0.0, 'TFBind10-Exact-v0': -1.8585268}
+        task_to_max = {'TFBind8-Exact-v0': 1.0, 'TFBind10-Exact-v0': 2.1287067}
+        oracle_y_min = task_to_min.get(cfg.TASK_NAME, ds_all.tensors[1].min().item())
+        oracle_y_max = task_to_max.get(cfg.TASK_NAME, ds_all.tensors[1].max().item())
+        # y_min_val = ds_all.tensors[1].min().item()
+        # y_max_val = ds_all.tensors[1].max().item()
+        norm_scores = (scores - oracle_y_min) / (oracle_y_max - oracle_y_min)
         
         percentiles = np.percentile(norm_scores, [100, 80, 50])
         
