@@ -38,9 +38,11 @@ class VectorFieldNet(nn.Module):
         # 联合处理 (保留 Dropout 防止过拟合)
         self.joint_mlp = nn.Sequential(
             nn.Linear(hidden_dim * 4, hidden_dim),
+            nn.LayerNorm(hidden_dim), # <--- 新增
             nn.SiLU(),
             nn.Dropout(0.1),
             nn.Linear(hidden_dim, hidden_dim),
+            nn.LayerNorm(hidden_dim), # <--- 新增
             nn.SiLU(),
             nn.Dropout(0.1),
             nn.Linear(hidden_dim, input_dim)

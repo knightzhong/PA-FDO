@@ -56,7 +56,9 @@ class ConditionalFlowMatching:
         # diff > 0 意味着 worse 的散度比 better 大 (符合预期)
         diff = div_worse - div_better
         loss_dpo = -torch.nn.functional.logsigmoid(1.0 * diff).mean()
-        
+        # 🚨 看看训练时的速度到底是多少
+        if torch.rand(1).item() < 0.01: # 偶尔打印
+            print(f"[Train Debug] v_pred norm: {v_pred.norm(dim=1).mean().item():.2f} | Target u_t norm: {(x_better - x_anchor).norm(dim=1).mean().item():.2f}")
         return loss_mse + 0.1 * loss_dpo
 
     # @torch.no_grad()
@@ -245,7 +247,12 @@ class ConditionalFlowMatching:
             
             # === D. 欧拉积分 ===
             v_total = v_flow + grad_final + v_reg
-            
+            # 🚨🚨🚨【必须补上这一段】全局速度截断 🚨🚨🚨
+            # 没有这段代码，模型 100% 会炸，因为初始流场往往很不稳定
+            v_norm = v_total.view(B, -1).norm(dim=1, keepdim=True)
+            # 强制限制单步速度不超过 2.0 (在标准化空间里，这已经很快了)
+            clip_coef = torch.clamp(2.0 / (v_norm + 1e-6), max=1.0)
+            v_total = v_total * clip_coef.view(B, -1).expand_as(v_total)
             # --- Debug Velocity Components ---
             if i % 10 == 0: # 每10步打印一次状态
                 v_flow_norm = v_flow.norm().item()
@@ -257,6 +264,8 @@ class ConditionalFlowMatching:
                 # 如果某个分量特别大，提前预警
                 if v_grad_norm > 100 or v_flow_norm > 100:
                     print(f"    -> Warning: Velocity Explosion detected at Step {i}!")
+                # 建议加一行打印截断后的速度，确认刹车生效了
+                print(f"[Step {i}] ... Total(Clipped): {v_total.norm().item():.2f}")
             
             x_current = x_current + v_total * dt
             

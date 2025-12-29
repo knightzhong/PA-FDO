@@ -107,79 +107,112 @@ RaM-ListNet Epoch 2000/2000 | Loss: 5.6194 | Pred Std: 0.9888
 Training Flow Model (PA-FDO Dynamic)...
 
 [Check Training Data] y_anc mean: 0.0384 | min: -3.4211 | max: 1.4793
-Step 500/5000 | Loss: 0.6921
-Step 1000/5000 | Loss: 0.6447
-Step 1500/5000 | Loss: 0.5864
-Step 2000/5000 | Loss: 0.5244
-Step 2500/5000 | Loss: 0.5040
-Step 3000/5000 | Loss: 0.4904
-Step 3500/5000 | Loss: 0.4848
-Step 4000/5000 | Loss: 0.4640
-Step 4500/5000 | Loss: 0.4208
-Step 5000/5000 | Loss: 0.4056
+[Train Debug] v_pred norm: 1.07 | Target u_t norm: 4.82
+[Train Debug] v_pred norm: 1.00 | Target u_t norm: 4.66
+Step 500/5000 | Loss: 0.6802
+[Train Debug] v_pred norm: 1.19 | Target u_t norm: 4.80
+[Train Debug] v_pred norm: 1.30 | Target u_t norm: 4.87
+Step 1000/5000 | Loss: 0.6638
+[Train Debug] v_pred norm: 1.41 | Target u_t norm: 4.73
+[Train Debug] v_pred norm: 1.43 | Target u_t norm: 4.84
+[Train Debug] v_pred norm: 1.52 | Target u_t norm: 4.80
+[Train Debug] v_pred norm: 1.61 | Target u_t norm: 4.88
+Step 1500/5000 | Loss: 0.6464
+[Train Debug] v_pred norm: 1.65 | Target u_t norm: 4.72
+[Train Debug] v_pred norm: 1.67 | Target u_t norm: 4.78
+[Train Debug] v_pred norm: 1.67 | Target u_t norm: 4.74
+[Train Debug] v_pred norm: 1.63 | Target u_t norm: 4.79
+[Train Debug] v_pred norm: 1.68 | Target u_t norm: 4.83
+Step 2000/5000 | Loss: 0.6251
+[Train Debug] v_pred norm: 1.75 | Target u_t norm: 4.86
+[Train Debug] v_pred norm: 1.83 | Target u_t norm: 4.71
+Step 2500/5000 | Loss: 0.6260
+[Train Debug] v_pred norm: 1.92 | Target u_t norm: 4.75
+[Train Debug] v_pred norm: 1.96 | Target u_t norm: 4.76
+[Train Debug] v_pred norm: 1.88 | Target u_t norm: 4.77
+[Train Debug] v_pred norm: 1.82 | Target u_t norm: 4.71
+Step 3000/5000 | Loss: 0.6245
+[Train Debug] v_pred norm: 1.96 | Target u_t norm: 4.75
+[Train Debug] v_pred norm: 1.95 | Target u_t norm: 4.67
+[Train Debug] v_pred norm: 2.16 | Target u_t norm: 4.76
+[Train Debug] v_pred norm: 1.94 | Target u_t norm: 4.77
+[Train Debug] v_pred norm: 2.05 | Target u_t norm: 4.84
+[Train Debug] v_pred norm: 2.11 | Target u_t norm: 4.79
+[Train Debug] v_pred norm: 1.92 | Target u_t norm: 4.72
+[Train Debug] v_pred norm: 2.08 | Target u_t norm: 4.77
+Step 3500/5000 | Loss: 0.6042
+[Train Debug] v_pred norm: 2.17 | Target u_t norm: 4.78
+[Train Debug] v_pred norm: 1.99 | Target u_t norm: 4.73
+[Train Debug] v_pred norm: 2.21 | Target u_t norm: 4.74
+[Train Debug] v_pred norm: 2.28 | Target u_t norm: 4.72
+Step 4000/5000 | Loss: 0.5897
+[Train Debug] v_pred norm: 2.34 | Target u_t norm: 4.71
+[Train Debug] v_pred norm: 2.09 | Target u_t norm: 4.70
+[Train Debug] v_pred norm: 2.10 | Target u_t norm: 4.76
+Step 4500/5000 | Loss: 0.5362
+[Train Debug] v_pred norm: 2.19 | Target u_t norm: 4.78
+[Train Debug] v_pred norm: 2.26 | Target u_t norm: 4.77
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 4.81
+[Train Debug] v_pred norm: 2.26 | Target u_t norm: 4.78
+[Train Debug] v_pred norm: 2.30 | Target u_t norm: 4.84
+Step 5000/5000 | Loss: 0.5380
 
 Running Evaluation with Energy-based Guidance...
-[Info] Clamped Targets: Max=1.5742
+[Info] Safe Targets: Mean=1.4803 | Max=1.4803
 
-[Debug] Start Sampling. X Range: [-1.03, 2.30]
-[Debug] Y_Target Stats: Mean=1.4800 | Min=1.3398 | Max=1.5742
-[Debug] Y_Start  Stats: Mean=0.6475  | Min=0.1473 | Max=1.1970
-[Step 0] X_max: 2.30 | Flow: 126.12 | Grad: 4.57 | Reg: 3.22
-    -> Warning: Velocity Explosion detected at Step 0!
-[Step 10] X_max: 6.58 | Flow: 314.14 | Grad: 4.19 | Reg: 3.36
-    -> Warning: Velocity Explosion detected at Step 10!
-[Step 20] X_max: 16.12 | Flow: 538.28 | Grad: 3.64 | Reg: 4.46
-    -> Warning: Velocity Explosion detected at Step 20!
-[Step 30] X_max: 31.77 | Flow: 844.13 | Grad: 3.19 | Reg: 7.14
-    -> Warning: Velocity Explosion detected at Step 30!
-[Step 40] X_max: 58.85 | Flow: 1682.35 | Grad: 2.68 | Reg: 12.33
-    -> Warning: Velocity Explosion detected at Step 40!
-[Step 50] X_max: 126.27 | Flow: 4583.88 | Grad: 2.22 | Reg: 25.12
-    -> Warning: Velocity Explosion detected at Step 50!
-[Step 60] X_max: 338.87 | Flow: 15203.44 | Grad: 1.73 | Reg: 64.98
-    -> Warning: Velocity Explosion detected at Step 60!
-[Step 70] X_max: 1292.34 | Flow: 55035.73 | Grad: 1.27 | Reg: 207.11
-    -> Warning: Velocity Explosion detected at Step 70!
-[Step 80] X_max: 4971.17 | Flow: 205977.06 | Grad: 0.85 | Reg: 737.29
-    -> Warning: Velocity Explosion detected at Step 80!
-[Step 90] X_max: 19235.72 | Flow: 781874.44 | Grad: 0.40 | Reg: 2743.81
-    -> Warning: Velocity Explosion detected at Step 90!
-tensor([[ 9.7276e-01,  9.0001e-02, -7.3009e-02,  ...,  7.5821e-02,
-          9.6286e-01, -6.6241e-03],
-        [ 1.0818e+00,  1.3774e-01, -2.3514e-01,  ...,  6.3437e-01,
-          8.9167e-02,  1.3453e-01],
-        [ 9.0261e-01,  5.4373e-02,  6.2946e-02,  ..., -2.1900e-02,
-          8.6011e-01,  1.3487e-01],
+[Debug] Start Sampling. X Range: [-0.97, 2.30]
+[Debug] Y_Target Stats: Mean=1.4803 | Min=1.4803 | Max=1.4803
+[Debug] Y_Start  Stats: Mean=0.6720  | Min=0.1473 | Max=1.2010
+[Step 0] X_max: 2.30 | Flow: 15.50 | Grad: 9.15 | Reg: 3.22
+[Step 0] ... Total(Clipped): 20.45
+[Step 10] X_max: 2.28 | Flow: 22.13 | Grad: 8.31 | Reg: 3.15
+[Step 10] ... Total(Clipped): 22.34
+[Step 20] X_max: 2.28 | Flow: 28.44 | Grad: 7.40 | Reg: 3.09
+[Step 20] ... Total(Clipped): 22.30
+[Step 30] X_max: 2.27 | Flow: 30.22 | Grad: 6.60 | Reg: 3.05
+[Step 30] ... Total(Clipped): 20.87
+[Step 40] X_max: 2.30 | Flow: 32.45 | Grad: 5.78 | Reg: 3.05
+[Step 40] ... Total(Clipped): 18.46
+[Step 50] X_max: 2.37 | Flow: 39.27 | Grad: 4.71 | Reg: 3.06
+[Step 50] ... Total(Clipped): 18.39
+[Step 60] X_max: 2.44 | Flow: 51.76 | Grad: 3.71 | Reg: 3.08
+[Step 60] ... Total(Clipped): 19.49
+[Step 70] X_max: 2.51 | Flow: 69.58 | Grad: 2.86 | Reg: 3.11
+[Step 70] ... Total(Clipped): 21.13
+[Step 80] X_max: 2.59 | Flow: 80.22 | Grad: 1.78 | Reg: 3.16
+[Step 80] ... Total(Clipped): 22.52
+[Step 90] X_max: 2.67 | Flow: 74.20 | Grad: 0.90 | Reg: 3.22
+[Step 90] ... Total(Clipped): 22.61
+tensor([[ 0.0018,  0.0629,  1.1736,  ...,  0.1210,  1.1583,  0.1370],
+        [-0.1744,  0.7589, -0.1187,  ..., -0.1230, -0.1277,  0.9928],
+        [-0.1424, -0.1501,  0.8763,  ..., -0.0339,  0.0187,  1.0356],
         ...,
-        [-7.1731e-01, -5.7979e+00,  9.3366e+00,  ...,  1.0134e+00,
-         -1.4809e+00,  3.1637e+00],
-        [ 1.0579e+00, -8.6784e-01, -8.3822e-02,  ..., -7.5508e-01,
-         -1.1329e+00,  1.5919e+00],
-        [ 2.1482e-02,  8.5135e-01,  2.4434e-02,  ...,  7.9591e-01,
-          8.2924e-02, -2.3506e-02]])
-[0.54326266 0.3820455  0.3827877  0.20022266 0.33994764 0.36750093
- 0.3535542  0.61988205 0.2516905  0.39004454 0.41284582 0.4022286
- 0.25467983 0.39215767 0.3825609  0.42432895 0.2516905  0.19737764
- 0.39707458 0.39984745 0.12638643 0.37552056 0.2516905  0.59207106
- 0.3380819  0.548829   0.32110462 0.36611965 0.39081764 0.39059085
- 0.37394342 0.2516905  0.2516905  0.3718406  0.4147425  0.33710262
- 0.5795778  0.20022266 0.36714014 0.35520348 0.4704882  0.38157135
- 0.2516905  0.2801406  0.2516905  0.34448317 0.39367294 0.2516905
- 0.36933574 0.3691193  0.40486744 0.37486085 0.33766958 0.3603781
- 0.37719044 0.39369357 0.4223086  0.45327383 0.40229043 0.2516905
- 0.40030098 0.2516905  0.41376325 0.3746753  0.2516905  0.34049395
- 0.2516905  0.3722323  0.37873664 0.67840064 0.7588133  0.37873664
- 0.76617324 0.33740157 0.32695955 0.39609534 0.33921576 0.20022266
- 0.33827773 0.4533666  0.20022266 0.40846494 0.34784356 0.37079948
- 0.33752525 0.2154785  0.34536964 0.2516905  0.2439389  0.37873664
- 0.36201707 0.41709274 0.24483569 0.4308127  0.47637406 0.34833834
- 0.395549   0.31255928 0.3575434  0.50428814 0.4079186  0.69762504
- 0.39597163 0.2516905  0.2516905  0.39737353 0.34411207 0.38382882
- 0.38245785 0.35134828 0.38297325 0.40527976 0.3708098  0.41218612
- 0.34065887 0.38102502 0.34935886 0.29951966 0.3370923  0.2516905
- 0.9323898  0.2516905  0.37946853 0.38530284 0.2516905  0.7634313
- 0.79473674 0.37619057]
+        [ 0.7087, -0.1269, -0.3702,  ..., -0.0570, -0.0218,  0.9636],
+        [ 0.0075, -0.0876,  0.0204,  ..., -0.0926,  1.0372, -0.0034],
+        [ 0.7854, -0.2066, -0.0755,  ..., -0.0877, -0.0783,  0.8117]])
+[0.4055787  0.3795819  0.41208303 0.3959201  0.36774832 0.38904464
+ 0.39185873 0.39111656 0.3299695  0.3683668  0.34329775 0.37438667
+ 0.3767575  0.37190244 0.39354926 0.34716323 0.33892715 0.38440606
+ 0.40360987 0.35223478 0.385107   0.3692739  0.34749308 0.37668535
+ 0.3739125  0.35257494 0.35465714 0.3686554  0.35037935 0.40140396
+ 0.34690553 0.39021978 0.3889725  0.34357604 0.37511855 0.37940666
+ 0.40852678 0.38132396 0.36155322 0.35376036 0.38255063 0.36674845
+ 0.38091165 0.3816126  0.36276954 0.39998144 0.41462913 0.35633737
+ 0.38569456 0.40030098 0.34752402 0.38393188 0.3555849  0.37847894
+ 0.35657445 0.35604873 0.39266276 0.4042799  0.4101142  0.4120212
+ 0.40940297 0.37754092 0.38762215 0.33739126 0.38151982 0.34290603
+ 0.41376325 0.38593164 0.40144518 0.3406795  0.40580547 0.37459284
+ 0.40554777 0.38078794 0.359739   0.3519977  0.37810788 0.3781594
+ 0.37332496 0.36714014 0.3418134  0.36482084 0.37548962 0.4179483
+ 0.362182   0.3944151  0.4071558  0.36950067 0.4102173  0.3535336
+ 0.3466994  0.37362388 0.36495486 0.37998393 0.38325155 0.3425968
+ 0.34052488 0.3860038  0.41425803 0.36370757 0.38413805 0.40742382
+ 0.39571393 0.35247186 0.41792768 0.34150416 0.35656413 0.3639859
+ 0.33942193 0.3454418  0.3530388  0.38546777 0.38299385 0.41392818
+ 0.34418422 0.37168598 0.40241414 0.4113821  0.38249907 0.40901124
+ 0.40721765 0.40450665 0.39685813 0.35075042 0.4022286  0.38172597
+ 0.39681688 0.37381974]
 ------------------------------
-Result (Valid 128): Mean 0.3764
-Percentiles (100/80/50): 0.9324 | 0.4082 | 0.3720
+Result (Valid 128): Mean 0.3772
+Percentiles (100/80/50): 0.4179 | 0.4014 | 0.3783
 ------------------------------

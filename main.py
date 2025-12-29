@@ -180,9 +180,10 @@ def main():
         # 为每个 anchor 找到 batch 内最合适的 gold target
         # 这样构建的 (x_anc, x_better) 对是符合几何邻近性的
         with torch.no_grad():
-            x_better, _ = batch_optimal_transport_match(x_anc, x_gold)
-            y_better = torch.ones_like(y_anc) * y_gold.max() # 这里的 y_better 可以取实际值，也可以取 Target Max
-            y_better = y_gold # 这里我们用实际匹配到的分值
+            x_better, best_indices = batch_optimal_transport_match(x_anc, x_gold)
+            
+            # ✅ 修复：必须使用同样的 indices 来重排 y_gold
+            y_better = y_gold[best_indices]
         
         # 4. 生成自对抗负样本 (Self-Generated Worse)
         # 利用当前模型走一步，看看会去哪
@@ -250,27 +251,19 @@ def main():
     x_starts = ds_all.tensors[0][selected_indices].to(cfg.DEVICE)
     y_starts = ds_all.tensors[1][selected_indices].view(-1, 1).to(cfg.DEVICE)
     
-    # 2. 构造目标 (Target) - 【修改这里】
-    # 获取训练集见过的最大值 (约 1.47)
-    y_max = ds_all.tensors[1].max().item()
+    # 1. 目标设定：不要外推！不要加噪声！
+    # 既然训练集见过的最好分数是 1.47，我们就设 1.45 (稍微保守一点点，确保在流形内部)
+    y_max = ds_all.tensors[1].max().item() # 约 1.47
     
-    # === 核心修改：克制贪婪 ===
-    # 设定目标为“训练集最大值”。这已经是极好的结果了。
-    base_target = y_max 
+    # 【修改点 A】保守目标
+    base_target = y_max  # 或者 y_max * 0.95
+    y_targets = torch.full_like(y_starts, base_target) 
+    # 也不要 maximum(start + 0.1) 了，万一起点本身就很高，再加就出界了
+    # 只要目标 > 起点即可
+    y_targets = torch.maximum(y_targets, y_starts + 0.05)
     
-    # 只加非常微小的扰动 (0.05)
-    target_noise = torch.randn_like(y_starts) * 0.05
-    y_targets = base_target + target_noise
+    print(f"[Info] Safe Targets: Mean={y_targets.mean().item():.4f} | Max={y_targets.max().item():.4f}")
     
-    # 【强制截断】：绝对不允许目标超过 y_max + 0.2
-    # 这样就把输入限制在了模型勉强能泛化的边缘，而不是 2.17 这种深渊
-    y_targets = torch.clamp(y_targets, max=y_max + 0.2)
-    
-    # 同时也确保目标不比起点低
-    y_targets = torch.maximum(y_targets, y_starts + 0.1)
-    
-    # 打印一下确认，修改后这里的 Max 应该在 1.5-1.6 左右，绝不能是 2.0+
-    print(f"[Info] Clamped Targets: Max={y_targets.max().item():.4f}")
     # 4. 执行采样
     x_final = cfm.sample(
         x_starts, 
@@ -280,9 +273,15 @@ def main():
         centroid=centroid,   # 传入质心
         steps=cfg.ODE_STEPS,
         # === 参数大降级 ===
-        # 之前是 4.0，太强了，导致一点点误差就被放大成灾难
-        cfg_scale=2.0,   # 先设 1.0 (标准流场)，稳了再加到 1.5, 2.0
-        grad_scale=0.5,  # 之前是 60 的梯度，太吓人。降到 0.5 试试
+        # === 核心修改：重启导航 ===
+        # 1. 开启 CFG：让模型更听 y_target=1.48 的话
+        cfg_scale=2.0,   
+        
+        # 2. 开启 Gradient：这是 PA-FDO 的灵魂！
+        # 之前为了查错关掉了，现在必须开起来，否则模型不知道高分在哪。
+        # 有了 Clipping 保护，我们可以放心地设为 1.0 甚至更高。
+        grad_scale=1.0,  
+        
         reg_scale=0.05   # 保持不变
     )
     
