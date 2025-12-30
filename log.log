@@ -106,113 +106,324 @@ RaM-ListNet Epoch 2000/2000 | Loss: 5.6194 | Pred Std: 0.9888
 
 Training Flow Model (PA-FDO Dynamic)...
 
-[Check Training Data] y_anc mean: 0.0384 | min: -3.4211 | max: 1.4793
-[Train Debug] v_pred norm: 1.07 | Target u_t norm: 4.82
-[Train Debug] v_pred norm: 1.00 | Target u_t norm: 4.66
-Step 500/5000 | Loss: 0.6802
-[Train Debug] v_pred norm: 1.19 | Target u_t norm: 4.80
-[Train Debug] v_pred norm: 1.30 | Target u_t norm: 4.87
-Step 1000/5000 | Loss: 0.6638
-[Train Debug] v_pred norm: 1.41 | Target u_t norm: 4.73
-[Train Debug] v_pred norm: 1.43 | Target u_t norm: 4.84
-[Train Debug] v_pred norm: 1.52 | Target u_t norm: 4.80
-[Train Debug] v_pred norm: 1.61 | Target u_t norm: 4.88
-Step 1500/5000 | Loss: 0.6464
-[Train Debug] v_pred norm: 1.65 | Target u_t norm: 4.72
-[Train Debug] v_pred norm: 1.67 | Target u_t norm: 4.78
-[Train Debug] v_pred norm: 1.67 | Target u_t norm: 4.74
-[Train Debug] v_pred norm: 1.63 | Target u_t norm: 4.79
-[Train Debug] v_pred norm: 1.68 | Target u_t norm: 4.83
-Step 2000/5000 | Loss: 0.6251
-[Train Debug] v_pred norm: 1.75 | Target u_t norm: 4.86
-[Train Debug] v_pred norm: 1.83 | Target u_t norm: 4.71
-Step 2500/5000 | Loss: 0.6260
-[Train Debug] v_pred norm: 1.92 | Target u_t norm: 4.75
-[Train Debug] v_pred norm: 1.96 | Target u_t norm: 4.76
-[Train Debug] v_pred norm: 1.88 | Target u_t norm: 4.77
-[Train Debug] v_pred norm: 1.82 | Target u_t norm: 4.71
-Step 3000/5000 | Loss: 0.6245
-[Train Debug] v_pred norm: 1.96 | Target u_t norm: 4.75
-[Train Debug] v_pred norm: 1.95 | Target u_t norm: 4.67
-[Train Debug] v_pred norm: 2.16 | Target u_t norm: 4.76
-[Train Debug] v_pred norm: 1.94 | Target u_t norm: 4.77
-[Train Debug] v_pred norm: 2.05 | Target u_t norm: 4.84
-[Train Debug] v_pred norm: 2.11 | Target u_t norm: 4.79
-[Train Debug] v_pred norm: 1.92 | Target u_t norm: 4.72
-[Train Debug] v_pred norm: 2.08 | Target u_t norm: 4.77
-Step 3500/5000 | Loss: 0.6042
-[Train Debug] v_pred norm: 2.17 | Target u_t norm: 4.78
-[Train Debug] v_pred norm: 1.99 | Target u_t norm: 4.73
-[Train Debug] v_pred norm: 2.21 | Target u_t norm: 4.74
-[Train Debug] v_pred norm: 2.28 | Target u_t norm: 4.72
-Step 4000/5000 | Loss: 0.5897
-[Train Debug] v_pred norm: 2.34 | Target u_t norm: 4.71
-[Train Debug] v_pred norm: 2.09 | Target u_t norm: 4.70
-[Train Debug] v_pred norm: 2.10 | Target u_t norm: 4.76
-Step 4500/5000 | Loss: 0.5362
-[Train Debug] v_pred norm: 2.19 | Target u_t norm: 4.78
-[Train Debug] v_pred norm: 2.26 | Target u_t norm: 4.77
-[Train Debug] v_pred norm: 2.54 | Target u_t norm: 4.81
-[Train Debug] v_pred norm: 2.26 | Target u_t norm: 4.78
-[Train Debug] v_pred norm: 2.30 | Target u_t norm: 4.84
-Step 5000/5000 | Loss: 0.5380
+[Check Training Data] y_anc mean: 0.0025 | min: -3.1356 | max: 1.4761
+[Train Debug] v_pred norm: 0.79 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 0.77 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 0.89 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 0.98 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 0.98 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 1.10 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 1.08 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 1.15 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 1.23 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 1.17 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 1.24 | Target u_t norm: 4.02
+Step 500/20000 | Loss: 0.4817
+[Train Debug] v_pred norm: 1.37 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 1.31 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 1.45 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 1.43 | Target u_t norm: 3.99
+Step 1000/20000 | Loss: 0.4514
+[Train Debug] v_pred norm: 1.66 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 1.67 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 1.70 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 1.59 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 1.69 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 1.77 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 1.68 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 1.73 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 1.83 | Target u_t norm: 4.04
+Step 1500/20000 | Loss: 0.3905
+[Train Debug] v_pred norm: 1.98 | Target u_t norm: 3.98
+[Train Debug] v_pred norm: 1.87 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 2.12 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.12 | Target u_t norm: 4.05
+Step 2000/20000 | Loss: 0.3733
+[Train Debug] v_pred norm: 2.20 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 2.29 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.28 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.25 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.24 | Target u_t norm: 3.98
+Step 2500/20000 | Loss: 0.3626
+[Train Debug] v_pred norm: 2.27 | Target u_t norm: 4.09
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.33 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 2.25 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.30 | Target u_t norm: 4.00
+Step 3000/20000 | Loss: 0.3061
+[Train Debug] v_pred norm: 2.38 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 4.08
+Step 3500/20000 | Loss: 0.2966
+[Train Debug] v_pred norm: 2.43 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 2.60 | Target u_t norm: 4.08
+[Train Debug] v_pred norm: 2.53 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 2.49 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 2.44 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 4.08
+[Train Debug] v_pred norm: 2.56 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.55 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.97
+[Train Debug] v_pred norm: 2.45 | Target u_t norm: 4.05
+Step 4000/20000 | Loss: 0.2940
+[Train Debug] v_pred norm: 2.57 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 2.60 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 4.08
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 4.04
+Step 4500/20000 | Loss: 0.2894
+[Train Debug] v_pred norm: 2.62 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.56 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 2.55 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 2.73 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.78 | Target u_t norm: 4.05
+Step 5000/20000 | Loss: 0.2758
+[Train Debug] v_pred norm: 2.67 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.81 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 2.76 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 2.59 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.75 | Target u_t norm: 4.06
+Step 5500/20000 | Loss: 0.2629
+[Train Debug] v_pred norm: 2.69 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.75 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.76 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 2.77 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.74 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.74 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.77 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.85 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 4.09
+[Train Debug] v_pred norm: 2.75 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.74 | Target u_t norm: 4.05
+Step 6000/20000 | Loss: 0.2493
+[Train Debug] v_pred norm: 2.78 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.78 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.80 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 2.70 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.70 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 2.74 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.80 | Target u_t norm: 4.03
+Step 6500/20000 | Loss: 0.2516
+[Train Debug] v_pred norm: 2.74 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 2.87 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.73 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.80 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 2.86 | Target u_t norm: 4.01
+Step 7000/20000 | Loss: 0.2548
+[Train Debug] v_pred norm: 2.90 | Target u_t norm: 4.09
+[Train Debug] v_pred norm: 2.88 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 2.85 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.90 | Target u_t norm: 4.09
+Step 7500/20000 | Loss: 0.2325
+[Train Debug] v_pred norm: 2.82 | Target u_t norm: 4.03
+Step 8000/20000 | Loss: 0.2482
+[Train Debug] v_pred norm: 2.97 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.78 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 2.90 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.92 | Target u_t norm: 3.99
+Step 8500/20000 | Loss: 0.2300
+[Train Debug] v_pred norm: 2.69 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 2.96 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.96 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 3.05 | Target u_t norm: 4.05
+Step 9000/20000 | Loss: 0.2315
+[Train Debug] v_pred norm: 3.13 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.94 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 2.84 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.86 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.89 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.94 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 2.96 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.94 | Target u_t norm: 4.02
+Step 9500/20000 | Loss: 0.2000
+[Train Debug] v_pred norm: 2.85 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 2.85 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.87 | Target u_t norm: 4.04
+Step 10000/20000 | Loss: 0.2102
+[Train Debug] v_pred norm: 2.92 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 3.00 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.91 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 2.99 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.92 | Target u_t norm: 4.05
+Step 10500/20000 | Loss: 0.2046
+[Train Debug] v_pred norm: 2.81 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.99 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.13 | Target u_t norm: 4.08
+[Train Debug] v_pred norm: 3.03 | Target u_t norm: 4.10
+[Train Debug] v_pred norm: 2.81 | Target u_t norm: 4.01
+Step 11000/20000 | Loss: 0.2048
+[Train Debug] v_pred norm: 2.96 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.00 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 2.93 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.09 | Target u_t norm: 4.06
+Step 11500/20000 | Loss: 0.2008
+[Train Debug] v_pred norm: 2.94 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.90 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 3.06 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 3.06 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 3.01 | Target u_t norm: 4.03
+Step 12000/20000 | Loss: 0.2041
+[Train Debug] v_pred norm: 2.84 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 3.09 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.96 | Target u_t norm: 3.98
+[Train Debug] v_pred norm: 3.01 | Target u_t norm: 4.04
+Step 12500/20000 | Loss: 0.1965
+[Train Debug] v_pred norm: 3.02 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.07 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.04 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 2.91 | Target u_t norm: 4.02
+Step 13000/20000 | Loss: 0.1984
+[Train Debug] v_pred norm: 2.99 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.03 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 3.09 | Target u_t norm: 4.02
+Step 13500/20000 | Loss: 0.2123
+[Train Debug] v_pred norm: 2.99 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.01 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 3.01 | Target u_t norm: 4.08
+[Train Debug] v_pred norm: 2.99 | Target u_t norm: 4.08
+Step 14000/20000 | Loss: 0.2012
+[Train Debug] v_pred norm: 2.99 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.04 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 2.99 | Target u_t norm: 4.00
+Step 14500/20000 | Loss: 0.2042
+[Train Debug] v_pred norm: 2.98 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.96 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 3.11 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 2.85 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.09 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.15 | Target u_t norm: 4.05
+Step 15000/20000 | Loss: 0.2016
+[Train Debug] v_pred norm: 3.11 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.04 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.18 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.05 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 3.10 | Target u_t norm: 4.04
+Step 15500/20000 | Loss: 0.1918
+[Train Debug] v_pred norm: 3.03 | Target u_t norm: 4.09
+[Train Debug] v_pred norm: 2.98 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 3.02 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 3.10 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 3.17 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.03 | Target u_t norm: 4.03
+Step 16000/20000 | Loss: 0.2061
+[Train Debug] v_pred norm: 3.07 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 3.11 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 3.15 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 3.09 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.10 | Target u_t norm: 3.98
+[Train Debug] v_pred norm: 2.93 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.18 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.04 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.05 | Target u_t norm: 4.05
+Step 16500/20000 | Loss: 0.1825
+[Train Debug] v_pred norm: 3.10 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.98 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 3.07 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.93 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 3.09 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 2.88 | Target u_t norm: 4.01
+[Train Debug] v_pred norm: 3.10 | Target u_t norm: 4.02
+Step 17000/20000 | Loss: 0.1949
+[Train Debug] v_pred norm: 3.11 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 3.11 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 2.97 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 3.03 | Target u_t norm: 4.04
+Step 17500/20000 | Loss: 0.1908
+[Train Debug] v_pred norm: 3.11 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 3.05 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 2.93 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 2.98 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 3.07 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 3.04 | Target u_t norm: 4.05
+Step 18000/20000 | Loss: 0.2038
+[Train Debug] v_pred norm: 3.02 | Target u_t norm: 3.98
+[Train Debug] v_pred norm: 2.94 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 3.06 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.04 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.16 | Target u_t norm: 4.08
+[Train Debug] v_pred norm: 2.99 | Target u_t norm: 3.96
+[Train Debug] v_pred norm: 3.03 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.19 | Target u_t norm: 4.02
+Step 18500/20000 | Loss: 0.1941
+[Train Debug] v_pred norm: 2.94 | Target u_t norm: 4.00
+[Train Debug] v_pred norm: 3.02 | Target u_t norm: 4.02
+[Train Debug] v_pred norm: 3.19 | Target u_t norm: 4.07
+[Train Debug] v_pred norm: 3.02 | Target u_t norm: 4.06
+Step 19000/20000 | Loss: 0.2001
+[Train Debug] v_pred norm: 3.02 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.09 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 3.07 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 3.03 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 3.04 | Target u_t norm: 4.01
+Step 19500/20000 | Loss: 0.2085
+[Train Debug] v_pred norm: 2.98 | Target u_t norm: 3.99
+[Train Debug] v_pred norm: 3.12 | Target u_t norm: 4.05
+[Train Debug] v_pred norm: 3.12 | Target u_t norm: 4.04
+[Train Debug] v_pred norm: 3.04 | Target u_t norm: 4.03
+[Train Debug] v_pred norm: 3.13 | Target u_t norm: 4.06
+[Train Debug] v_pred norm: 3.00 | Target u_t norm: 4.04
+Step 20000/20000 | Loss: 0.1882
 
 Running Evaluation with Energy-based Guidance...
 [Info] Safe Targets: Mean=1.4803 | Max=1.4803
 
-[Debug] Start Sampling. X Range: [-0.97, 2.30]
+[Debug] Start Sampling. X Range: [-0.96, 2.30]
 [Debug] Y_Target Stats: Mean=1.4803 | Min=1.4803 | Max=1.4803
-[Debug] Y_Start  Stats: Mean=0.6720  | Min=0.1473 | Max=1.2010
-[Step 0] X_max: 2.30 | Flow: 15.50 | Grad: 9.15 | Reg: 3.22
-[Step 0] ... Total(Clipped): 20.45
-[Step 10] X_max: 2.28 | Flow: 22.13 | Grad: 8.31 | Reg: 3.15
-[Step 10] ... Total(Clipped): 22.34
-[Step 20] X_max: 2.28 | Flow: 28.44 | Grad: 7.40 | Reg: 3.09
-[Step 20] ... Total(Clipped): 22.30
-[Step 30] X_max: 2.27 | Flow: 30.22 | Grad: 6.60 | Reg: 3.05
-[Step 30] ... Total(Clipped): 20.87
-[Step 40] X_max: 2.30 | Flow: 32.45 | Grad: 5.78 | Reg: 3.05
-[Step 40] ... Total(Clipped): 18.46
-[Step 50] X_max: 2.37 | Flow: 39.27 | Grad: 4.71 | Reg: 3.06
-[Step 50] ... Total(Clipped): 18.39
-[Step 60] X_max: 2.44 | Flow: 51.76 | Grad: 3.71 | Reg: 3.08
-[Step 60] ... Total(Clipped): 19.49
-[Step 70] X_max: 2.51 | Flow: 69.58 | Grad: 2.86 | Reg: 3.11
-[Step 70] ... Total(Clipped): 21.13
-[Step 80] X_max: 2.59 | Flow: 80.22 | Grad: 1.78 | Reg: 3.16
-[Step 80] ... Total(Clipped): 22.52
-[Step 90] X_max: 2.67 | Flow: 74.20 | Grad: 0.90 | Reg: 3.22
-[Step 90] ... Total(Clipped): 22.61
-tensor([[ 0.0018,  0.0629,  1.1736,  ...,  0.1210,  1.1583,  0.1370],
-        [-0.1744,  0.7589, -0.1187,  ..., -0.1230, -0.1277,  0.9928],
-        [-0.1424, -0.1501,  0.8763,  ..., -0.0339,  0.0187,  1.0356],
+[Debug] Y_Start  Stats: Mean=0.6935  | Min=0.1560 | Max=1.2009
+[Step 0] X_max: 2.30 | Flow: 13.54 | Grad: 0.00 | Reg: 3.22
+[Step 0] ... Total(Clipped): 16.03
+[Step 10] X_max: 2.27 | Flow: 28.75 | Grad: 0.00 | Reg: 3.13
+[Step 10] ... Total(Clipped): 29.87
+[Step 20] X_max: 2.45 | Flow: 34.63 | Grad: 0.00 | Reg: 3.06
+[Step 20] ... Total(Clipped): 33.99
+[Step 30] X_max: 2.64 | Flow: 39.98 | Grad: 0.00 | Reg: 3.01
+[Step 30] ... Total(Clipped): 35.02
+[Step 40] X_max: 2.82 | Flow: 49.65 | Grad: 0.00 | Reg: 2.97
+[Step 40] ... Total(Clipped): 32.89
+[Step 50] X_max: 2.99 | Flow: 63.15 | Grad: 0.00 | Reg: 2.96
+[Step 50] ... Total(Clipped): 23.85
+[Step 60] X_max: 3.16 | Flow: 83.88 | Grad: 0.00 | Reg: 2.96
+[Step 60] ... Total(Clipped): 30.05
+[Step 70] X_max: 3.34 | Flow: 101.62 | Grad: 0.00 | Reg: 2.99
+    -> Warning: Velocity Explosion detected at Step 70!
+[Step 70] ... Total(Clipped): 33.27
+[Step 80] X_max: 3.52 | Flow: 119.77 | Grad: 0.00 | Reg: 3.03
+    -> Warning: Velocity Explosion detected at Step 80!
+[Step 80] ... Total(Clipped): 37.26
+[Step 90] X_max: 3.70 | Flow: 135.09 | Grad: 0.00 | Reg: 3.11
+    -> Warning: Velocity Explosion detected at Step 90!
+[Step 90] ... Total(Clipped): 38.63
+tensor([[ 0.9572,  0.1061,  0.0964,  ..., -0.0581,  1.0021,  0.0120],
+        [ 1.0086, -0.0117, -0.0387,  ...,  0.0077,  0.9866,  0.0681],
+        [-0.0160,  0.0341,  0.9312,  ...,  0.0057,  0.0498,  0.1093],
         ...,
-        [ 0.7087, -0.1269, -0.3702,  ..., -0.0570, -0.0218,  0.9636],
-        [ 0.0075, -0.0876,  0.0204,  ..., -0.0926,  1.0372, -0.0034],
-        [ 0.7854, -0.2066, -0.0755,  ..., -0.0877, -0.0783,  0.8117]])
-[0.4055787  0.3795819  0.41208303 0.3959201  0.36774832 0.38904464
- 0.39185873 0.39111656 0.3299695  0.3683668  0.34329775 0.37438667
- 0.3767575  0.37190244 0.39354926 0.34716323 0.33892715 0.38440606
- 0.40360987 0.35223478 0.385107   0.3692739  0.34749308 0.37668535
- 0.3739125  0.35257494 0.35465714 0.3686554  0.35037935 0.40140396
- 0.34690553 0.39021978 0.3889725  0.34357604 0.37511855 0.37940666
- 0.40852678 0.38132396 0.36155322 0.35376036 0.38255063 0.36674845
- 0.38091165 0.3816126  0.36276954 0.39998144 0.41462913 0.35633737
- 0.38569456 0.40030098 0.34752402 0.38393188 0.3555849  0.37847894
- 0.35657445 0.35604873 0.39266276 0.4042799  0.4101142  0.4120212
- 0.40940297 0.37754092 0.38762215 0.33739126 0.38151982 0.34290603
- 0.41376325 0.38593164 0.40144518 0.3406795  0.40580547 0.37459284
- 0.40554777 0.38078794 0.359739   0.3519977  0.37810788 0.3781594
- 0.37332496 0.36714014 0.3418134  0.36482084 0.37548962 0.4179483
- 0.362182   0.3944151  0.4071558  0.36950067 0.4102173  0.3535336
- 0.3466994  0.37362388 0.36495486 0.37998393 0.38325155 0.3425968
- 0.34052488 0.3860038  0.41425803 0.36370757 0.38413805 0.40742382
- 0.39571393 0.35247186 0.41792768 0.34150416 0.35656413 0.3639859
- 0.33942193 0.3454418  0.3530388  0.38546777 0.38299385 0.41392818
- 0.34418422 0.37168598 0.40241414 0.4113821  0.38249907 0.40901124
- 0.40721765 0.40450665 0.39685813 0.35075042 0.4022286  0.38172597
- 0.39681688 0.37381974]
+        [ 0.9806, -0.0352, -0.0050,  ...,  0.9826, -0.0387, -0.0478],
+        [ 0.0472, -0.0522,  0.9518,  ...,  0.0556,  1.0525, -0.0439],
+        [ 0.0354, -0.0042,  0.1599,  ...,  0.0324,  1.0070,  0.0745]])
+[0.3676968  0.41143364 0.37448975 0.35518286 0.40684658 0.3733765
+ 0.37387127 0.354585   0.3475034  0.3413186  0.52359504 0.35292542
+ 0.38216922 0.29666433 0.3663155  0.34279263 0.3717066  0.39855894
+ 0.33915392 0.3706655  0.40819693 0.39101347 0.40385726 0.4113821
+ 0.37845832 0.39450788 0.39241537 0.38722014 0.34049395 0.35282233
+ 0.36995423 0.39841464 0.35520348 0.37535563 0.3608729  0.47071496
+ 0.38049933 0.36056364 0.3835917  0.3381128  0.38428235 0.36467654
+ 0.40030098 0.3794479  0.40735167 0.45576835 0.34823528 0.23869212
+ 0.3539253  0.38937452 0.34307095 0.39050838 0.33806127 0.40052778
+ 0.7796355  0.36427453 0.3223828  0.35323465 0.390127   0.35143074
+ 0.40852678 0.50305116 0.36395496 0.39333278 0.37844804 0.3733868
+ 0.38203523 0.37843773 0.38229293 0.3777574  0.417938   0.43377107
+ 0.34419453 0.36684123 0.39714673 0.41325817 0.41207275 0.38727167
+ 0.41470128 0.4019709  0.375067   0.38580793 0.38782832 0.37473714
+ 0.34230816 0.40862986 0.39263183 0.395549   0.6109863  0.3747784
+ 0.95283055 0.4461613  0.3956624  0.38191152 0.5364182  0.37509793
+ 0.34175155 0.41754627 0.3976106  0.3650064  0.35120398 0.39329156
+ 0.36932546 0.35585287 0.3740156  0.3317631  0.41490743 0.36801633
+ 0.41153672 0.36575887 0.38698307 0.39505422 0.37868512 0.36622274
+ 0.86799574 0.39409557 0.39070424 0.40206367 0.3597287  0.39907435
+ 0.41519606 0.39561084 0.36660412 0.30945656 0.33265987 0.35696614
+ 0.41780397 0.35102874]
 ------------------------------
-Result (Valid 128): Mean 0.3772
-Percentiles (100/80/50): 0.4179 | 0.4014 | 0.3783
+Result (Valid 128): Mean 0.3943
+Percentiles (100/80/50): 0.9528 | 0.4071 | 0.3800
 ------------------------------

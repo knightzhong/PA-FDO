@@ -251,7 +251,7 @@ class ConditionalFlowMatching:
             # 没有这段代码，模型 100% 会炸，因为初始流场往往很不稳定
             v_norm = v_total.view(B, -1).norm(dim=1, keepdim=True)
             # 强制限制单步速度不超过 2.0 (在标准化空间里，这已经很快了)
-            clip_coef = torch.clamp(2.0 / (v_norm + 1e-6), max=1.0)
+            clip_coef = torch.clamp(5.0 / (v_norm + 1e-6), max=1.0)
             v_total = v_total * clip_coef.view(B, -1).expand_as(v_total)
             # --- Debug Velocity Components ---
             if i % 10 == 0: # 每10步打印一次状态

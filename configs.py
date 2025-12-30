@@ -6,7 +6,7 @@ class Config:
     
     # 训练参数
     SEED = 42
-    BATCH_SIZE = 256
+    BATCH_SIZE = 1024
     EPOCHS = 100
     LR = 1e-3
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -18,7 +18,7 @@ class Config:
     TOP_K_NEIGHBORS = 50
     
     # 模型参数
-    LATENT_DIM = 256  # 中间层维度
+    LATENT_DIM = 1024  # 中间层维度
     
     # 推理参数
     ODE_STEPS = 100   # 欧拉积分步数

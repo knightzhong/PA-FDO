@@ -153,10 +153,10 @@ def main():
     print("\nTraining Flow Model (PA-FDO Dynamic)...")
     net = VectorFieldNet(input_dim=input_dim, hidden_dim=cfg.LATENT_DIM)
     cfm = ConditionalFlowMatching(net, cfg.DEVICE)
-    optimizer = torch.optim.Adam(net.parameters(), lr=cfg.LR)
+    optimizer = torch.optim.AdamW(net.parameters(), lr=5e-4, weight_decay=1e-5)#torch.optim.Adam(net.parameters(), lr=cfg.LR)
     
     # 训练步数 (Iterations) 而非 Epochs
-    total_steps = 5000 
+    total_steps = 20000 
     
     for step in range(total_steps):
         net.train()
@@ -274,13 +274,9 @@ def main():
         steps=cfg.ODE_STEPS,
         # === 参数大降级 ===
         # === 核心修改：重启导航 ===
-        # 1. 开启 CFG：让模型更听 y_target=1.48 的话
-        cfg_scale=2.0,   
-        
-        # 2. 开启 Gradient：这是 PA-FDO 的灵魂！
-        # 之前为了查错关掉了，现在必须开起来，否则模型不知道高分在哪。
-        # 有了 Clipping 保护，我们可以放心地设为 1.0 甚至更高。
-        grad_scale=1.0,  
+        # === 相信 Flow，关掉 Proxy ===
+        cfg_scale=1.5,   # 给一点点 CFG 推力即可（不要 2.0，容易炸）
+        grad_scale=0.0,  # <--- 设为 0！Step 0 的 9.08 梯度是在谋杀生成质量
         
         reg_scale=0.05   # 保持不变
     )
