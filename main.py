@@ -44,16 +44,27 @@ def main():
     cfg = Config()
     
     # 1. 加载数据 (动态池模式)
-    task, ds_all, ds_gold, (mean_x, std_x, mean_y, std_y) = build_dynamic_loader(cfg)
+    # task, ds_all, ds_gold, (mean_x, std_x, mean_y, std_y) = build_dynamic_loader(cfg)
+    # 1. 加载数据 (只拿 dataset_fixed)
+    task, ds_fixed, _, (mean_x, std_x, mean_y, std_y) = build_dynamic_loader(cfg) # <--- 接口变了
+    ds_all = ds_fixed
+    # Loader (直接 shuffle 这个包含配对的 dataset)
+    loader = torch.utils.data.DataLoader(ds_fixed, batch_size=cfg.BATCH_SIZE, shuffle=True, drop_last=True)
     
+    # test
+    # print(f"Norm Formula: y_norm = (y_raw - {mean_y.item():.4f}) / {std_y.item():.4f}")
+    # target_norm_1 = (1.0 - mean_y) / std_y
+    # print(f"To get Raw 1.0, we need Norm: {target_norm_1.item():.4f}")
+    # import sys
+    # sys.exit(0)
     # 统计量上设备
     mean_x, std_x = mean_x.to(cfg.DEVICE), std_x.to(cfg.DEVICE)
     mean_y, std_y = mean_y.to(cfg.DEVICE), std_y.to(cfg.DEVICE)
     input_dim = ds_all.tensors[0].shape[1]
     
     # DataLoader (Random Samplers)
-    loader_all = torch.utils.data.DataLoader(ds_all, batch_size=cfg.BATCH_SIZE, shuffle=True, drop_last=True)
-    loader_gold = torch.utils.data.DataLoader(ds_gold, batch_size=cfg.BATCH_SIZE, shuffle=True, drop_last=True)
+    # loader_all = torch.utils.data.DataLoader(ds_all, batch_size=cfg.BATCH_SIZE, shuffle=True, drop_last=True)
+    # loader_gold = torch.utils.data.DataLoader(ds_gold, batch_size=cfg.BATCH_SIZE, shuffle=True, drop_last=True)
     
     # 用于无限循环的 iterator
     def cycle(loader):
@@ -61,8 +72,9 @@ def main():
             for batch in loader:
                 yield batch
 
-    iter_all = cycle(loader_all)
-    iter_gold = cycle(loader_gold)
+    # iter_all = cycle(loader_all)
+    # iter_gold = cycle(loader_gold)
+    iter_loader = cycle(loader)
     
     # ==========================================
     # Part A: 训练 ListNet Proxy (ICLR 2025 Strategy)
@@ -100,8 +112,8 @@ def main():
     # 3. Listwise 训练循环
     # 论文建议 List Length (Batch Size) m=100 或 1000
     list_size = 512 
-    
-    for epoch in range(2000):
+    maxepo = 5000
+    for epoch in range(maxepo):
         proxy.train()
         proxy_opt.zero_grad()
         
@@ -123,7 +135,7 @@ def main():
         
         if (epoch + 1) % 20 == 0:
             pred_std = y_pred.std().item()
-            print(f"RaM-ListNet Epoch {epoch+1}/2000 | Loss: {loss.item():.4f} | Pred Std: {pred_std:.4f}")
+            print(f"RaM-ListNet Epoch {epoch+1}/{maxepo} | Loss: {loss.item():.4f} | Pred Std: {pred_std:.4f}")
             # 如果 Pred Std 一直很小 (< 0.01)，说明输出还没拉开差距
 
 
@@ -162,28 +174,18 @@ def main():
         net.train()
         optimizer.zero_grad()
         
-        # 1. 采样 Anchor (起点)
-        x_anc, y_anc = next(iter_all)
+        # 1. 直接获取锁定的配对 (4项)
+        # x_anc: 起点
+        # y_anc: 起点分数
+        # x_better: 锁定的终点 (OT配对好的)
+        # y_better: 锁定的终点分数
+        x_anc, y_anc, x_better, y_better = next(iter_loader)
+        
+        # 上设备
         x_anc = x_anc.to(cfg.DEVICE)
         y_anc = y_anc.view(-1, 1).to(cfg.DEVICE)
-        # 🚨【诊断插桩】🚨：请添加这行打印，看一眼训练时的 Y 到底是多少！
-        if step == 0:
-            print(f"\n[Check Training Data] y_anc mean: {y_anc.mean().item():.4f} | min: {y_anc.min().item():.4f} | max: {y_anc.max().item():.4f}")
-            # 如果这里打印出 -5.0 或 -10.0 这种奇怪的负数，说明 Data Loader 可能没改对，或者 Dataset 被重复处理了
-            # 正常应该是 0.0 附近 (比如 -1.5 到 1.5)
-        # 2. 采样 Candidates (潜在终点 - 真实高分数据)
-        x_gold, y_gold = next(iter_gold)
-        x_gold = x_gold.to(cfg.DEVICE)
-        y_gold = y_gold.view(-1, 1).to(cfg.DEVICE)
-        
-        # 3. Minibatch OT 配对 (Manifold Matching)
-        # 为每个 anchor 找到 batch 内最合适的 gold target
-        # 这样构建的 (x_anc, x_better) 对是符合几何邻近性的
-        with torch.no_grad():
-            x_better, best_indices = batch_optimal_transport_match(x_anc, x_gold)
-            
-            # ✅ 修复：必须使用同样的 indices 来重排 y_gold
-            y_better = y_gold[best_indices]
+        x_better = x_better.to(cfg.DEVICE)
+        y_better = y_better.view(-1, 1).to(cfg.DEVICE)
         
         # 4. 生成自对抗负样本 (Self-Generated Worse)
         # 利用当前模型走一步，看看会去哪
@@ -251,19 +253,15 @@ def main():
     x_starts = ds_all.tensors[0][selected_indices].to(cfg.DEVICE)
     y_starts = ds_all.tensors[1][selected_indices].view(-1, 1).to(cfg.DEVICE)
     
-    # 1. 目标设定：不要外推！不要加噪声！
-    # 既然训练集见过的最好分数是 1.47，我们就设 1.45 (稍微保守一点点，确保在流形内部)
-    y_max = ds_all.tensors[1].max().item() # 约 1.47
+    # 2. 构造目标 (Target) - 【关键修改】
+    # 我们不仅要超越 y_max，我们要去星辰大海！
+    # 之前是 y_max (1.5)，现在我们直接设为 5.0 (对应 Raw ~ 0.7)
+    # 如果 5.0 能稳住，下次就设 8.8 (Raw 1.0)
+    base_target = 5.0 
     
-    # 【修改点 A】保守目标
-    base_target = y_max  # 或者 y_max * 0.95
-    y_targets = torch.full_like(y_starts, base_target) 
-    # 也不要 maximum(start + 0.1) 了，万一起点本身就很高，再加就出界了
-    # 只要目标 > 起点即可
-    y_targets = torch.maximum(y_targets, y_starts + 0.05)
+    y_targets = torch.full_like(y_starts, base_target)
     
-    print(f"[Info] Safe Targets: Mean={y_targets.mean().item():.4f} | Max={y_targets.max().item():.4f}")
-    
+    print(f"[Info] Aggressive Targets: Norm={base_target} (Approx Raw 0.7)")
     # 4. 执行采样
     x_final = cfm.sample(
         x_starts, 
@@ -272,13 +270,19 @@ def main():
         proxy=norm_proxy,
         centroid=centroid,   # 传入质心
         steps=cfg.ODE_STEPS,
-        # === 参数大降级 ===
-        # === 核心修改：重启导航 ===
-        # === 相信 Flow，关掉 Proxy ===
-        cfg_scale=1.5,   # 给一点点 CFG 推力即可（不要 2.0，容易炸）
-        grad_scale=0.0,  # <--- 设为 0！Step 0 的 9.08 梯度是在谋杀生成质量
+        # === 🚨 严格执行这组参数 🚨 ===
         
-        reg_scale=0.05   # 保持不变
+        # 1. 关掉火箭助推 (CFG)
+        # 既然模型能生成 0.95，不需要 CFG 放大，求稳！
+        cfg_scale=1.0,   
+        
+        # 2. 开启导航 (Gradient)
+        # 之前为了测试关了，现在必须开！有了导航，才能把 80% 的 0.4 变成 0.9
+        # 放心，有 Clipping (5.0) 保护，开启梯度也不会炸
+        grad_scale=1.0,  
+        
+        # 3. 保持安全绳
+        reg_scale=0.1
     )
     
     # 5. 反标准化与评估

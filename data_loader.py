@@ -121,12 +121,40 @@ def build_dynamic_loader(cfg):
     
     print(f"Data Loaded: Input Dim={x.shape[1]} | Total {len(x_tensor)} | Gold {len(x_gold)}")
     
-    dataset_all = TensorDataset(x_tensor, y_tensor)
-    dataset_gold = TensorDataset(x_gold, y_gold)
+    # === 5. 全局固定配对 (Global Fixed OT) ===
+    print("Computing Global Fixed Optimal Transport Pairs...")
+    
+    # 把数据放到 GPU 上算会快很多 (如果显存够)
+    # TFBind8: 30000 x 3000 的矩阵，完全没问题
+    device = cfg.DEVICE if torch.cuda.is_available() else 'cpu'
+    x_all_gpu = x_tensor.to(device)
+    x_gold_gpu = x_gold.to(device)
+    
+    # 计算余弦相似度矩阵 (Cosine Similarity)
+    # Normalize
+    x_all_norm = F.normalize(x_all_gpu, p=2, dim=1)
+    x_gold_norm = F.normalize(x_gold_gpu, p=2, dim=1)
+    
+    # Matrix Multiplication: (N, D) @ (M, D).T -> (N, M)
+    sim_matrix = torch.mm(x_all_norm, x_gold_norm.t())
+    
+    # 找到每个样本最近的 Gold 样本索引
+    best_indices = torch.argmax(sim_matrix, dim=1).cpu() # 转回 CPU
+    
+    # 构建锁定的目标
+    fixed_x_better = x_gold[best_indices]
+    fixed_y_better = y_gold[best_indices]
+    
+    print(f"Fixed Pairs Computed. Mapping {len(x_tensor)} low samples -> {len(x_gold)} gold samples.")
+    
+    # === 6. 构建 Dataset ===
+    # Dataset 包含 4 项：(起点x, 起点y, 终点x, 终点y)
+    dataset_fixed = TensorDataset(x_tensor, y_tensor, fixed_x_better, fixed_y_better)
     
     stats = (
         torch.tensor(mean_x), torch.tensor(std_x),
         torch.tensor(mean_y), torch.tensor(std_y)
     )
     
-    return task, dataset_all, dataset_gold, stats
+    # 注意：不再返回 dataset_all/dataset_gold，直接返回配对好的 dataset_fixed
+    return task, dataset_fixed, None, stats

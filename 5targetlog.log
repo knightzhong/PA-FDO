@@ -1,0 +1,557 @@
+nohup: 忽略输入
+Detected Discrete Task: TFBind8-Exact-v0. Applying One-Hot + Dequantization.
+Data Loaded: Input Dim=32 | Total 32898 | Gold 3289
+Computing Global Fixed Optimal Transport Pairs...
+Fixed Pairs Computed. Mapping 32898 low samples -> 3289 gold samples.
+
+Training RankProxy with ListNet Loss (RaM Strategy)...
+RaM-ListNet Epoch 20/5000 | Loss: 6.1816 | Pred Std: 0.6373
+RaM-ListNet Epoch 40/5000 | Loss: 6.1755 | Pred Std: 0.5980
+RaM-ListNet Epoch 60/5000 | Loss: 6.1944 | Pred Std: 0.5684
+RaM-ListNet Epoch 80/5000 | Loss: 6.0300 | Pred Std: 0.5934
+RaM-ListNet Epoch 100/5000 | Loss: 5.9339 | Pred Std: 0.6875
+RaM-ListNet Epoch 120/5000 | Loss: 5.9024 | Pred Std: 0.7563
+RaM-ListNet Epoch 140/5000 | Loss: 6.0598 | Pred Std: 0.7545
+RaM-ListNet Epoch 160/5000 | Loss: 6.0349 | Pred Std: 0.6345
+RaM-ListNet Epoch 180/5000 | Loss: 5.8782 | Pred Std: 0.7337
+RaM-ListNet Epoch 200/5000 | Loss: 6.1177 | Pred Std: 0.7485
+RaM-ListNet Epoch 220/5000 | Loss: 5.8930 | Pred Std: 0.7698
+RaM-ListNet Epoch 240/5000 | Loss: 5.9338 | Pred Std: 0.7393
+RaM-ListNet Epoch 260/5000 | Loss: 5.8904 | Pred Std: 0.7883
+RaM-ListNet Epoch 280/5000 | Loss: 6.0421 | Pred Std: 0.7353
+RaM-ListNet Epoch 300/5000 | Loss: 5.9043 | Pred Std: 0.8160
+RaM-ListNet Epoch 320/5000 | Loss: 6.1264 | Pred Std: 0.8362
+RaM-ListNet Epoch 340/5000 | Loss: 5.8371 | Pred Std: 0.7681
+RaM-ListNet Epoch 360/5000 | Loss: 5.8989 | Pred Std: 0.7685
+RaM-ListNet Epoch 380/5000 | Loss: 5.9955 | Pred Std: 0.8620
+RaM-ListNet Epoch 400/5000 | Loss: 6.0759 | Pred Std: 0.8125
+RaM-ListNet Epoch 420/5000 | Loss: 6.1026 | Pred Std: 0.7791
+RaM-ListNet Epoch 440/5000 | Loss: 6.0795 | Pred Std: 0.8287
+RaM-ListNet Epoch 460/5000 | Loss: 5.9603 | Pred Std: 0.8182
+RaM-ListNet Epoch 480/5000 | Loss: 6.0390 | Pred Std: 0.8011
+RaM-ListNet Epoch 500/5000 | Loss: 5.9581 | Pred Std: 0.7830
+RaM-ListNet Epoch 520/5000 | Loss: 5.9439 | Pred Std: 0.7895
+RaM-ListNet Epoch 540/5000 | Loss: 5.8832 | Pred Std: 0.8201
+RaM-ListNet Epoch 560/5000 | Loss: 5.8852 | Pred Std: 0.8088
+RaM-ListNet Epoch 580/5000 | Loss: 5.7051 | Pred Std: 0.8454
+RaM-ListNet Epoch 600/5000 | Loss: 5.9163 | Pred Std: 0.8168
+RaM-ListNet Epoch 620/5000 | Loss: 5.8661 | Pred Std: 0.8726
+RaM-ListNet Epoch 640/5000 | Loss: 5.9566 | Pred Std: 0.8499
+RaM-ListNet Epoch 660/5000 | Loss: 5.8462 | Pred Std: 0.9074
+RaM-ListNet Epoch 680/5000 | Loss: 6.0222 | Pred Std: 0.8733
+RaM-ListNet Epoch 700/5000 | Loss: 5.7288 | Pred Std: 0.7841
+RaM-ListNet Epoch 720/5000 | Loss: 5.7857 | Pred Std: 0.8529
+RaM-ListNet Epoch 740/5000 | Loss: 5.8355 | Pred Std: 0.8886
+RaM-ListNet Epoch 760/5000 | Loss: 5.8916 | Pred Std: 0.9499
+RaM-ListNet Epoch 780/5000 | Loss: 5.6904 | Pred Std: 0.8774
+RaM-ListNet Epoch 800/5000 | Loss: 5.7807 | Pred Std: 0.9497
+RaM-ListNet Epoch 820/5000 | Loss: 5.7672 | Pred Std: 0.8442
+RaM-ListNet Epoch 840/5000 | Loss: 5.7509 | Pred Std: 0.8861
+RaM-ListNet Epoch 860/5000 | Loss: 5.8764 | Pred Std: 0.9137
+RaM-ListNet Epoch 880/5000 | Loss: 5.6093 | Pred Std: 0.9078
+RaM-ListNet Epoch 900/5000 | Loss: 5.9191 | Pred Std: 0.8420
+RaM-ListNet Epoch 920/5000 | Loss: 5.8472 | Pred Std: 0.8653
+RaM-ListNet Epoch 940/5000 | Loss: 6.0540 | Pred Std: 0.8804
+RaM-ListNet Epoch 960/5000 | Loss: 5.6989 | Pred Std: 0.9491
+RaM-ListNet Epoch 980/5000 | Loss: 5.9571 | Pred Std: 0.9287
+RaM-ListNet Epoch 1000/5000 | Loss: 5.8374 | Pred Std: 0.8850
+RaM-ListNet Epoch 1020/5000 | Loss: 5.8464 | Pred Std: 0.9285
+RaM-ListNet Epoch 1040/5000 | Loss: 5.7314 | Pred Std: 0.9917
+RaM-ListNet Epoch 1060/5000 | Loss: 5.6151 | Pred Std: 0.9472
+RaM-ListNet Epoch 1080/5000 | Loss: 5.5949 | Pred Std: 0.8874
+RaM-ListNet Epoch 1100/5000 | Loss: 5.9623 | Pred Std: 0.9147
+RaM-ListNet Epoch 1120/5000 | Loss: 5.7621 | Pred Std: 0.8713
+RaM-ListNet Epoch 1140/5000 | Loss: 5.5771 | Pred Std: 0.9272
+RaM-ListNet Epoch 1160/5000 | Loss: 5.8692 | Pred Std: 0.9668
+RaM-ListNet Epoch 1180/5000 | Loss: 5.8307 | Pred Std: 0.9493
+RaM-ListNet Epoch 1200/5000 | Loss: 5.8568 | Pred Std: 0.9026
+RaM-ListNet Epoch 1220/5000 | Loss: 5.6895 | Pred Std: 0.9123
+RaM-ListNet Epoch 1240/5000 | Loss: 5.8118 | Pred Std: 0.9769
+RaM-ListNet Epoch 1260/5000 | Loss: 5.6470 | Pred Std: 0.8895
+RaM-ListNet Epoch 1280/5000 | Loss: 5.7854 | Pred Std: 1.0076
+RaM-ListNet Epoch 1300/5000 | Loss: 5.9144 | Pred Std: 0.9167
+RaM-ListNet Epoch 1320/5000 | Loss: 5.9924 | Pred Std: 0.9020
+RaM-ListNet Epoch 1340/5000 | Loss: 5.8598 | Pred Std: 1.0289
+RaM-ListNet Epoch 1360/5000 | Loss: 5.6969 | Pred Std: 0.9498
+RaM-ListNet Epoch 1380/5000 | Loss: 5.6840 | Pred Std: 0.9719
+RaM-ListNet Epoch 1400/5000 | Loss: 5.7879 | Pred Std: 0.9107
+RaM-ListNet Epoch 1420/5000 | Loss: 5.6858 | Pred Std: 1.0321
+RaM-ListNet Epoch 1440/5000 | Loss: 5.7508 | Pred Std: 0.9154
+RaM-ListNet Epoch 1460/5000 | Loss: 5.7579 | Pred Std: 0.9360
+RaM-ListNet Epoch 1480/5000 | Loss: 5.8025 | Pred Std: 0.8999
+RaM-ListNet Epoch 1500/5000 | Loss: 5.7584 | Pred Std: 1.0317
+RaM-ListNet Epoch 1520/5000 | Loss: 6.0796 | Pred Std: 0.9828
+RaM-ListNet Epoch 1540/5000 | Loss: 5.5229 | Pred Std: 0.9780
+RaM-ListNet Epoch 1560/5000 | Loss: 5.5998 | Pred Std: 1.0555
+RaM-ListNet Epoch 1580/5000 | Loss: 5.7892 | Pred Std: 0.9383
+RaM-ListNet Epoch 1600/5000 | Loss: 5.7635 | Pred Std: 0.9358
+RaM-ListNet Epoch 1620/5000 | Loss: 5.6067 | Pred Std: 1.0290
+RaM-ListNet Epoch 1640/5000 | Loss: 5.6671 | Pred Std: 0.9833
+RaM-ListNet Epoch 1660/5000 | Loss: 5.6431 | Pred Std: 1.1026
+RaM-ListNet Epoch 1680/5000 | Loss: 5.8139 | Pred Std: 0.9145
+RaM-ListNet Epoch 1700/5000 | Loss: 5.7140 | Pred Std: 1.0770
+RaM-ListNet Epoch 1720/5000 | Loss: 5.7029 | Pred Std: 0.9831
+RaM-ListNet Epoch 1740/5000 | Loss: 5.8057 | Pred Std: 1.0002
+RaM-ListNet Epoch 1760/5000 | Loss: 5.5140 | Pred Std: 0.9803
+RaM-ListNet Epoch 1780/5000 | Loss: 5.8836 | Pred Std: 1.0108
+RaM-ListNet Epoch 1800/5000 | Loss: 5.7429 | Pred Std: 0.9683
+RaM-ListNet Epoch 1820/5000 | Loss: 5.7447 | Pred Std: 0.9588
+RaM-ListNet Epoch 1840/5000 | Loss: 5.5775 | Pred Std: 1.0299
+RaM-ListNet Epoch 1860/5000 | Loss: 5.7426 | Pred Std: 1.0864
+RaM-ListNet Epoch 1880/5000 | Loss: 5.7942 | Pred Std: 0.9238
+RaM-ListNet Epoch 1900/5000 | Loss: 5.7520 | Pred Std: 1.0184
+RaM-ListNet Epoch 1920/5000 | Loss: 5.5741 | Pred Std: 0.9773
+RaM-ListNet Epoch 1940/5000 | Loss: 5.6177 | Pred Std: 0.9986
+RaM-ListNet Epoch 1960/5000 | Loss: 5.7146 | Pred Std: 0.9610
+RaM-ListNet Epoch 1980/5000 | Loss: 5.5339 | Pred Std: 1.0675
+RaM-ListNet Epoch 2000/5000 | Loss: 5.6194 | Pred Std: 0.9888
+RaM-ListNet Epoch 2020/5000 | Loss: 5.7347 | Pred Std: 1.0588
+RaM-ListNet Epoch 2040/5000 | Loss: 5.7147 | Pred Std: 0.9822
+RaM-ListNet Epoch 2060/5000 | Loss: 5.7652 | Pred Std: 0.9369
+RaM-ListNet Epoch 2080/5000 | Loss: 5.7839 | Pred Std: 1.0534
+RaM-ListNet Epoch 2100/5000 | Loss: 5.4735 | Pred Std: 1.1310
+RaM-ListNet Epoch 2120/5000 | Loss: 5.6555 | Pred Std: 1.1006
+RaM-ListNet Epoch 2140/5000 | Loss: 5.8900 | Pred Std: 1.0499
+RaM-ListNet Epoch 2160/5000 | Loss: 5.6746 | Pred Std: 1.0286
+RaM-ListNet Epoch 2180/5000 | Loss: 5.7262 | Pred Std: 1.0634
+RaM-ListNet Epoch 2200/5000 | Loss: 5.5782 | Pred Std: 1.0375
+RaM-ListNet Epoch 2220/5000 | Loss: 5.6274 | Pred Std: 1.1795
+RaM-ListNet Epoch 2240/5000 | Loss: 5.7547 | Pred Std: 0.9852
+RaM-ListNet Epoch 2260/5000 | Loss: 5.8243 | Pred Std: 1.0694
+RaM-ListNet Epoch 2280/5000 | Loss: 5.7175 | Pred Std: 1.0461
+RaM-ListNet Epoch 2300/5000 | Loss: 5.8096 | Pred Std: 1.0487
+RaM-ListNet Epoch 2320/5000 | Loss: 5.3545 | Pred Std: 1.0347
+RaM-ListNet Epoch 2340/5000 | Loss: 5.4491 | Pred Std: 1.1973
+RaM-ListNet Epoch 2360/5000 | Loss: 5.8680 | Pred Std: 0.9712
+RaM-ListNet Epoch 2380/5000 | Loss: 5.5308 | Pred Std: 1.0885
+RaM-ListNet Epoch 2400/5000 | Loss: 5.5992 | Pred Std: 1.1333
+RaM-ListNet Epoch 2420/5000 | Loss: 5.5646 | Pred Std: 1.0733
+RaM-ListNet Epoch 2440/5000 | Loss: 5.7249 | Pred Std: 1.0770
+RaM-ListNet Epoch 2460/5000 | Loss: 5.3679 | Pred Std: 1.0654
+RaM-ListNet Epoch 2480/5000 | Loss: 5.7144 | Pred Std: 1.0450
+RaM-ListNet Epoch 2500/5000 | Loss: 5.4910 | Pred Std: 1.1364
+RaM-ListNet Epoch 2520/5000 | Loss: 5.5533 | Pred Std: 1.1481
+RaM-ListNet Epoch 2540/5000 | Loss: 5.5380 | Pred Std: 1.0487
+RaM-ListNet Epoch 2560/5000 | Loss: 5.5128 | Pred Std: 1.1787
+RaM-ListNet Epoch 2580/5000 | Loss: 5.4400 | Pred Std: 1.1694
+RaM-ListNet Epoch 2600/5000 | Loss: 5.6131 | Pred Std: 1.1053
+RaM-ListNet Epoch 2620/5000 | Loss: 5.4357 | Pred Std: 1.0891
+RaM-ListNet Epoch 2640/5000 | Loss: 5.6471 | Pred Std: 1.2241
+RaM-ListNet Epoch 2660/5000 | Loss: 5.7847 | Pred Std: 1.1148
+RaM-ListNet Epoch 2680/5000 | Loss: 5.5808 | Pred Std: 1.0653
+RaM-ListNet Epoch 2700/5000 | Loss: 5.5510 | Pred Std: 1.1284
+RaM-ListNet Epoch 2720/5000 | Loss: 5.7663 | Pred Std: 1.1390
+RaM-ListNet Epoch 2740/5000 | Loss: 5.5569 | Pred Std: 1.1017
+RaM-ListNet Epoch 2760/5000 | Loss: 5.5504 | Pred Std: 1.0794
+RaM-ListNet Epoch 2780/5000 | Loss: 5.4754 | Pred Std: 1.2225
+RaM-ListNet Epoch 2800/5000 | Loss: 5.6088 | Pred Std: 1.1383
+RaM-ListNet Epoch 2820/5000 | Loss: 5.6550 | Pred Std: 1.2132
+RaM-ListNet Epoch 2840/5000 | Loss: 5.5558 | Pred Std: 1.1785
+RaM-ListNet Epoch 2860/5000 | Loss: 5.8117 | Pred Std: 1.0774
+RaM-ListNet Epoch 2880/5000 | Loss: 5.5014 | Pred Std: 1.1481
+RaM-ListNet Epoch 2900/5000 | Loss: 5.3700 | Pred Std: 1.1181
+RaM-ListNet Epoch 2920/5000 | Loss: 5.7588 | Pred Std: 1.0952
+RaM-ListNet Epoch 2940/5000 | Loss: 5.5453 | Pred Std: 1.2395
+RaM-ListNet Epoch 2960/5000 | Loss: 5.5184 | Pred Std: 1.1559
+RaM-ListNet Epoch 2980/5000 | Loss: 5.5349 | Pred Std: 1.1428
+RaM-ListNet Epoch 3000/5000 | Loss: 5.5208 | Pred Std: 1.2414
+RaM-ListNet Epoch 3020/5000 | Loss: 5.6470 | Pred Std: 1.1308
+RaM-ListNet Epoch 3040/5000 | Loss: 5.7912 | Pred Std: 1.1798
+RaM-ListNet Epoch 3060/5000 | Loss: 5.7324 | Pred Std: 1.1274
+RaM-ListNet Epoch 3080/5000 | Loss: 5.6102 | Pred Std: 1.1200
+RaM-ListNet Epoch 3100/5000 | Loss: 5.4883 | Pred Std: 1.2115
+RaM-ListNet Epoch 3120/5000 | Loss: 5.4052 | Pred Std: 1.1591
+RaM-ListNet Epoch 3140/5000 | Loss: 5.6707 | Pred Std: 1.1745
+RaM-ListNet Epoch 3160/5000 | Loss: 5.2949 | Pred Std: 1.1346
+RaM-ListNet Epoch 3180/5000 | Loss: 5.5504 | Pred Std: 1.2667
+RaM-ListNet Epoch 3200/5000 | Loss: 5.4147 | Pred Std: 1.1681
+RaM-ListNet Epoch 3220/5000 | Loss: 5.6128 | Pred Std: 1.1043
+RaM-ListNet Epoch 3240/5000 | Loss: 5.2290 | Pred Std: 1.2037
+RaM-ListNet Epoch 3260/5000 | Loss: 5.3544 | Pred Std: 1.1515
+RaM-ListNet Epoch 3280/5000 | Loss: 5.2509 | Pred Std: 1.2418
+RaM-ListNet Epoch 3300/5000 | Loss: 5.4640 | Pred Std: 1.1428
+RaM-ListNet Epoch 3320/5000 | Loss: 5.5471 | Pred Std: 1.1594
+RaM-ListNet Epoch 3340/5000 | Loss: 5.6646 | Pred Std: 1.2669
+RaM-ListNet Epoch 3360/5000 | Loss: 5.5371 | Pred Std: 1.1968
+RaM-ListNet Epoch 3380/5000 | Loss: 5.3141 | Pred Std: 1.1442
+RaM-ListNet Epoch 3400/5000 | Loss: 5.3814 | Pred Std: 1.1487
+RaM-ListNet Epoch 3420/5000 | Loss: 5.6980 | Pred Std: 1.2412
+RaM-ListNet Epoch 3440/5000 | Loss: 5.3391 | Pred Std: 1.2305
+RaM-ListNet Epoch 3460/5000 | Loss: 5.5594 | Pred Std: 1.2580
+RaM-ListNet Epoch 3480/5000 | Loss: 5.4114 | Pred Std: 1.1360
+RaM-ListNet Epoch 3500/5000 | Loss: 5.2732 | Pred Std: 1.2482
+RaM-ListNet Epoch 3520/5000 | Loss: 5.2966 | Pred Std: 1.2858
+RaM-ListNet Epoch 3540/5000 | Loss: 5.4652 | Pred Std: 1.1879
+RaM-ListNet Epoch 3560/5000 | Loss: 5.6016 | Pred Std: 1.1526
+RaM-ListNet Epoch 3580/5000 | Loss: 5.3920 | Pred Std: 1.1666
+RaM-ListNet Epoch 3600/5000 | Loss: 5.3175 | Pred Std: 1.1942
+RaM-ListNet Epoch 3620/5000 | Loss: 5.6522 | Pred Std: 1.1992
+RaM-ListNet Epoch 3640/5000 | Loss: 5.3487 | Pred Std: 1.2641
+RaM-ListNet Epoch 3660/5000 | Loss: 5.3877 | Pred Std: 1.1584
+RaM-ListNet Epoch 3680/5000 | Loss: 5.6081 | Pred Std: 1.2509
+RaM-ListNet Epoch 3700/5000 | Loss: 5.5843 | Pred Std: 1.2379
+RaM-ListNet Epoch 3720/5000 | Loss: 5.5556 | Pred Std: 1.2615
+RaM-ListNet Epoch 3740/5000 | Loss: 5.5833 | Pred Std: 1.2420
+RaM-ListNet Epoch 3760/5000 | Loss: 5.5024 | Pred Std: 1.2462
+RaM-ListNet Epoch 3780/5000 | Loss: 5.4635 | Pred Std: 1.3294
+RaM-ListNet Epoch 3800/5000 | Loss: 5.6763 | Pred Std: 1.2894
+RaM-ListNet Epoch 3820/5000 | Loss: 5.5542 | Pred Std: 1.1904
+RaM-ListNet Epoch 3840/5000 | Loss: 5.6220 | Pred Std: 1.2181
+RaM-ListNet Epoch 3860/5000 | Loss: 5.5683 | Pred Std: 1.2150
+RaM-ListNet Epoch 3880/5000 | Loss: 5.4305 | Pred Std: 1.2919
+RaM-ListNet Epoch 3900/5000 | Loss: 5.2761 | Pred Std: 1.2603
+RaM-ListNet Epoch 3920/5000 | Loss: 5.4392 | Pred Std: 1.1826
+RaM-ListNet Epoch 3940/5000 | Loss: 5.3699 | Pred Std: 1.1777
+RaM-ListNet Epoch 3960/5000 | Loss: 5.6018 | Pred Std: 1.3147
+RaM-ListNet Epoch 3980/5000 | Loss: 5.4251 | Pred Std: 1.2909
+RaM-ListNet Epoch 4000/5000 | Loss: 5.5196 | Pred Std: 1.1889
+RaM-ListNet Epoch 4020/5000 | Loss: 5.3268 | Pred Std: 1.3517
+RaM-ListNet Epoch 4040/5000 | Loss: 5.4820 | Pred Std: 1.2353
+RaM-ListNet Epoch 4060/5000 | Loss: 5.3515 | Pred Std: 1.3296
+RaM-ListNet Epoch 4080/5000 | Loss: 5.4351 | Pred Std: 1.2267
+RaM-ListNet Epoch 4100/5000 | Loss: 5.3237 | Pred Std: 1.3213
+RaM-ListNet Epoch 4120/5000 | Loss: 5.3711 | Pred Std: 1.3084
+RaM-ListNet Epoch 4140/5000 | Loss: 5.5192 | Pred Std: 1.3179
+RaM-ListNet Epoch 4160/5000 | Loss: 5.3462 | Pred Std: 1.0911
+RaM-ListNet Epoch 4180/5000 | Loss: 5.4433 | Pred Std: 1.2209
+RaM-ListNet Epoch 4200/5000 | Loss: 5.6472 | Pred Std: 1.1684
+RaM-ListNet Epoch 4220/5000 | Loss: 5.7438 | Pred Std: 1.2449
+RaM-ListNet Epoch 4240/5000 | Loss: 5.7264 | Pred Std: 1.3269
+RaM-ListNet Epoch 4260/5000 | Loss: 5.4788 | Pred Std: 1.2278
+RaM-ListNet Epoch 4280/5000 | Loss: 5.4101 | Pred Std: 1.2165
+RaM-ListNet Epoch 4300/5000 | Loss: 5.3978 | Pred Std: 1.2218
+RaM-ListNet Epoch 4320/5000 | Loss: 5.3751 | Pred Std: 1.3268
+RaM-ListNet Epoch 4340/5000 | Loss: 5.3825 | Pred Std: 1.3049
+RaM-ListNet Epoch 4360/5000 | Loss: 5.6166 | Pred Std: 1.2566
+RaM-ListNet Epoch 4380/5000 | Loss: 5.3639 | Pred Std: 1.2902
+RaM-ListNet Epoch 4400/5000 | Loss: 5.3705 | Pred Std: 1.3584
+RaM-ListNet Epoch 4420/5000 | Loss: 5.3298 | Pred Std: 1.3400
+RaM-ListNet Epoch 4440/5000 | Loss: 5.4040 | Pred Std: 1.3019
+RaM-ListNet Epoch 4460/5000 | Loss: 5.2460 | Pred Std: 1.2998
+RaM-ListNet Epoch 4480/5000 | Loss: 5.4573 | Pred Std: 1.1824
+RaM-ListNet Epoch 4500/5000 | Loss: 5.4745 | Pred Std: 1.2471
+RaM-ListNet Epoch 4520/5000 | Loss: 5.5847 | Pred Std: 1.2699
+RaM-ListNet Epoch 4540/5000 | Loss: 5.0567 | Pred Std: 1.3155
+RaM-ListNet Epoch 4560/5000 | Loss: 5.4687 | Pred Std: 1.3393
+RaM-ListNet Epoch 4580/5000 | Loss: 5.1581 | Pred Std: 1.2834
+RaM-ListNet Epoch 4600/5000 | Loss: 5.3141 | Pred Std: 1.2354
+RaM-ListNet Epoch 4620/5000 | Loss: 5.0072 | Pred Std: 1.3777
+RaM-ListNet Epoch 4640/5000 | Loss: 5.4930 | Pred Std: 1.2985
+RaM-ListNet Epoch 4660/5000 | Loss: 5.5236 | Pred Std: 1.2973
+RaM-ListNet Epoch 4680/5000 | Loss: 5.1650 | Pred Std: 1.3680
+RaM-ListNet Epoch 4700/5000 | Loss: 5.4178 | Pred Std: 1.3954
+RaM-ListNet Epoch 4720/5000 | Loss: 5.2771 | Pred Std: 1.3449
+RaM-ListNet Epoch 4740/5000 | Loss: 5.3992 | Pred Std: 1.3196
+RaM-ListNet Epoch 4760/5000 | Loss: 5.3495 | Pred Std: 1.2601
+RaM-ListNet Epoch 4780/5000 | Loss: 5.5830 | Pred Std: 1.3131
+RaM-ListNet Epoch 4800/5000 | Loss: 5.2745 | Pred Std: 1.3019
+RaM-ListNet Epoch 4820/5000 | Loss: 5.1655 | Pred Std: 1.3460
+RaM-ListNet Epoch 4840/5000 | Loss: 5.3875 | Pred Std: 1.3032
+RaM-ListNet Epoch 4860/5000 | Loss: 5.4502 | Pred Std: 1.4611
+RaM-ListNet Epoch 4880/5000 | Loss: 5.3284 | Pred Std: 1.2681
+RaM-ListNet Epoch 4900/5000 | Loss: 5.0187 | Pred Std: 1.4173
+RaM-ListNet Epoch 4920/5000 | Loss: 5.3784 | Pred Std: 1.3028
+RaM-ListNet Epoch 4940/5000 | Loss: 5.5978 | Pred Std: 1.3622
+RaM-ListNet Epoch 4960/5000 | Loss: 5.2916 | Pred Std: 1.3063
+RaM-ListNet Epoch 4980/5000 | Loss: 5.4500 | Pred Std: 1.3281
+RaM-ListNet Epoch 5000/5000 | Loss: 5.0797 | Pred Std: 1.3693
+
+Training Flow Model (PA-FDO Dynamic)...
+[Train Debug] v_pred norm: 0.67 | Target u_t norm: 3.21
+[Train Debug] v_pred norm: 0.53 | Target u_t norm: 3.26
+[Train Debug] v_pred norm: 0.99 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 0.94 | Target u_t norm: 3.19
+[Train Debug] v_pred norm: 1.00 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 0.99 | Target u_t norm: 3.25
+Step 500/20000 | Loss: 0.3475
+[Train Debug] v_pred norm: 1.08 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 0.98 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 1.11 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 1.08 | Target u_t norm: 3.21
+[Train Debug] v_pred norm: 1.14 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 1.24 | Target u_t norm: 3.31
+Step 1000/20000 | Loss: 0.3267
+[Train Debug] v_pred norm: 1.18 | Target u_t norm: 3.26
+[Train Debug] v_pred norm: 1.27 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 1.31 | Target u_t norm: 3.26
+Step 1500/20000 | Loss: 0.2813
+[Train Debug] v_pred norm: 1.48 | Target u_t norm: 3.21
+[Train Debug] v_pred norm: 1.59 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 1.64 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 1.52 | Target u_t norm: 3.27
+Step 2000/20000 | Loss: 0.2645
+[Train Debug] v_pred norm: 1.71 | Target u_t norm: 3.32
+[Train Debug] v_pred norm: 1.65 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 1.79 | Target u_t norm: 3.33
+[Train Debug] v_pred norm: 1.87 | Target u_t norm: 3.34
+[Train Debug] v_pred norm: 1.71 | Target u_t norm: 3.20
+Step 2500/20000 | Loss: 0.2211
+[Train Debug] v_pred norm: 1.83 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 1.69 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 1.85 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 1.95 | Target u_t norm: 3.32
+[Train Debug] v_pred norm: 1.89 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 1.95 | Target u_t norm: 3.33
+[Train Debug] v_pred norm: 1.91 | Target u_t norm: 3.28
+Step 3000/20000 | Loss: 0.2135
+[Train Debug] v_pred norm: 1.93 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 1.98 | Target u_t norm: 3.22
+Step 3500/20000 | Loss: 0.2191
+[Train Debug] v_pred norm: 2.01 | Target u_t norm: 3.19
+[Train Debug] v_pred norm: 2.17 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.11 | Target u_t norm: 3.25
+Step 4000/20000 | Loss: 0.2093
+[Train Debug] v_pred norm: 2.05 | Target u_t norm: 3.26
+[Train Debug] v_pred norm: 2.23 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.15 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.08 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.12 | Target u_t norm: 3.28
+Step 4500/20000 | Loss: 0.1761
+[Train Debug] v_pred norm: 2.23 | Target u_t norm: 3.33
+[Train Debug] v_pred norm: 2.20 | Target u_t norm: 3.23
+[Train Debug] v_pred norm: 2.26 | Target u_t norm: 3.33
+Step 5000/20000 | Loss: 0.1734
+[Train Debug] v_pred norm: 2.24 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.26 | Target u_t norm: 3.32
+[Train Debug] v_pred norm: 2.20 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.27 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.30 | Target u_t norm: 3.30
+Step 5500/20000 | Loss: 0.1606
+[Train Debug] v_pred norm: 2.29 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 2.37 | Target u_t norm: 3.32
+[Train Debug] v_pred norm: 2.35 | Target u_t norm: 3.23
+[Train Debug] v_pred norm: 2.33 | Target u_t norm: 3.30
+Step 6000/20000 | Loss: 0.1628
+[Train Debug] v_pred norm: 2.26 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.37 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.39 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.39 | Target u_t norm: 3.32
+[Train Debug] v_pred norm: 2.24 | Target u_t norm: 3.21
+[Train Debug] v_pred norm: 2.30 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.20 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.34 | Target u_t norm: 3.26
+Step 6500/20000 | Loss: 0.1583
+[Train Debug] v_pred norm: 2.32 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.37 | Target u_t norm: 3.26
+[Train Debug] v_pred norm: 2.37 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.33 | Target u_t norm: 3.18
+[Train Debug] v_pred norm: 2.40 | Target u_t norm: 3.29
+Step 7000/20000 | Loss: 0.1537
+[Train Debug] v_pred norm: 2.35 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.49 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.38 | Target u_t norm: 3.21
+Step 7500/20000 | Loss: 0.1464
+[Train Debug] v_pred norm: 2.36 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.40 | Target u_t norm: 3.21
+Step 8000/20000 | Loss: 0.1465
+[Train Debug] v_pred norm: 2.50 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.50 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.39 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.45 | Target u_t norm: 3.33
+Step 8500/20000 | Loss: 0.1464
+[Train Debug] v_pred norm: 2.47 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.45 | Target u_t norm: 3.26
+[Train Debug] v_pred norm: 2.56 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.42 | Target u_t norm: 3.32
+Step 9000/20000 | Loss: 0.1406
+[Train Debug] v_pred norm: 2.38 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.49 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.46 | Target u_t norm: 3.23
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 3.19
+[Train Debug] v_pred norm: 2.43 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 3.29
+Step 9500/20000 | Loss: 0.1340
+[Train Debug] v_pred norm: 2.40 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.51 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.50 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.43 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.40 | Target u_t norm: 3.15
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 3.33
+Step 10000/20000 | Loss: 0.1336
+[Train Debug] v_pred norm: 2.48 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.59 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 3.25
+Step 10500/20000 | Loss: 0.1326
+[Train Debug] v_pred norm: 2.57 | Target u_t norm: 3.34
+[Train Debug] v_pred norm: 2.48 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.47 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.43 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.49 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.47 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.41 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.33
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 2.40 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.47 | Target u_t norm: 3.33
+[Train Debug] v_pred norm: 2.42 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.59 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.49 | Target u_t norm: 3.27
+Step 11000/20000 | Loss: 0.1260
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.59 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.51 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.41 | Target u_t norm: 3.27
+Step 11500/20000 | Loss: 0.1249
+[Train Debug] v_pred norm: 2.55 | Target u_t norm: 3.35
+[Train Debug] v_pred norm: 2.50 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.65 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 2.65 | Target u_t norm: 3.36
+Step 12000/20000 | Loss: 0.1355
+[Train Debug] v_pred norm: 2.63 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 2.59 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.43 | Target u_t norm: 3.21
+Step 12500/20000 | Loss: 0.1239
+[Train Debug] v_pred norm: 2.63 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.62 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.65 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.51 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.56 | Target u_t norm: 3.28
+Step 13000/20000 | Loss: 0.1243
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.57 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.63 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.63 | Target u_t norm: 3.28
+Step 13500/20000 | Loss: 0.1270
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.54 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.72 | Target u_t norm: 3.30
+Step 14000/20000 | Loss: 0.1180
+[Train Debug] v_pred norm: 2.55 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 2.60 | Target u_t norm: 3.25
+Step 14500/20000 | Loss: 0.1207
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.52 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.49 | Target u_t norm: 3.19
+Step 15000/20000 | Loss: 0.1250
+[Train Debug] v_pred norm: 2.61 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.61 | Target u_t norm: 3.32
+Step 15500/20000 | Loss: 0.1161
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 3.30
+[Train Debug] v_pred norm: 2.59 | Target u_t norm: 3.17
+[Train Debug] v_pred norm: 2.57 | Target u_t norm: 3.23
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 3.34
+[Train Debug] v_pred norm: 2.74 | Target u_t norm: 3.32
+Step 16000/20000 | Loss: 0.1234
+[Train Debug] v_pred norm: 2.59 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.65 | Target u_t norm: 3.25
+Step 16500/20000 | Loss: 0.1143
+[Train Debug] v_pred norm: 2.61 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.65 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.27
+Step 17000/20000 | Loss: 0.1090
+[Train Debug] v_pred norm: 2.66 | Target u_t norm: 3.21
+[Train Debug] v_pred norm: 2.69 | Target u_t norm: 3.32
+Step 17500/20000 | Loss: 0.1059
+[Train Debug] v_pred norm: 2.67 | Target u_t norm: 3.23
+[Train Debug] v_pred norm: 2.55 | Target u_t norm: 3.31
+[Train Debug] v_pred norm: 2.77 | Target u_t norm: 3.28
+[Train Debug] v_pred norm: 2.72 | Target u_t norm: 3.22
+[Train Debug] v_pred norm: 2.70 | Target u_t norm: 3.30
+Step 18000/20000 | Loss: 0.1027
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 2.71 | Target u_t norm: 3.29
+[Train Debug] v_pred norm: 2.55 | Target u_t norm: 3.20
+[Train Debug] v_pred norm: 2.55 | Target u_t norm: 3.25
+Step 18500/20000 | Loss: 0.1185
+[Train Debug] v_pred norm: 2.63 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 3.35
+[Train Debug] v_pred norm: 2.66 | Target u_t norm: 3.32
+[Train Debug] v_pred norm: 2.75 | Target u_t norm: 3.33
+[Train Debug] v_pred norm: 2.63 | Target u_t norm: 3.28
+Step 19000/20000 | Loss: 0.1097
+[Train Debug] v_pred norm: 2.67 | Target u_t norm: 3.23
+[Train Debug] v_pred norm: 2.71 | Target u_t norm: 3.27
+[Train Debug] v_pred norm: 2.67 | Target u_t norm: 3.19
+[Train Debug] v_pred norm: 2.66 | Target u_t norm: 3.20
+[Train Debug] v_pred norm: 2.64 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 2.66 | Target u_t norm: 3.23
+[Train Debug] v_pred norm: 2.66 | Target u_t norm: 3.32
+[Train Debug] v_pred norm: 2.68 | Target u_t norm: 3.25
+[Train Debug] v_pred norm: 2.63 | Target u_t norm: 3.23
+Step 19500/20000 | Loss: 0.1081
+[Train Debug] v_pred norm: 2.58 | Target u_t norm: 3.24
+[Train Debug] v_pred norm: 2.78 | Target u_t norm: 3.32
+[Train Debug] v_pred norm: 2.71 | Target u_t norm: 3.26
+Step 20000/20000 | Loss: 0.1123
+
+Running Evaluation with Energy-based Guidance...
+[Info] Aggressive Targets: Norm=5.0 (Approx Raw 0.7)
+
+[Debug] Start Sampling. X Range: [-0.93, 2.33]
+[Debug] Y_Target Stats: Mean=5.0000 | Min=5.0000 | Max=5.0000
+[Debug] Y_Start  Stats: Mean=0.6927  | Min=0.1483 | Max=1.1917
+[Step 0] X_max: 2.33 | Flow: 163.75 | Grad: 9.31 | Reg: 6.42
+    -> Warning: Velocity Explosion detected at Step 0!
+[Step 0] ... Total(Clipped): 56.57
+[Step 10] X_max: 2.48 | Flow: 164.63 | Grad: 8.49 | Reg: 6.45
+    -> Warning: Velocity Explosion detected at Step 10!
+[Step 10] ... Total(Clipped): 56.57
+[Step 20] X_max: 2.62 | Flow: 165.61 | Grad: 7.45 | Reg: 6.52
+    -> Warning: Velocity Explosion detected at Step 20!
+[Step 20] ... Total(Clipped): 56.57
+[Step 30] X_max: 2.77 | Flow: 166.66 | Grad: 6.70 | Reg: 6.65
+    -> Warning: Velocity Explosion detected at Step 30!
+[Step 30] ... Total(Clipped): 56.57
+[Step 40] X_max: 2.96 | Flow: 167.77 | Grad: 5.34 | Reg: 6.81
+    -> Warning: Velocity Explosion detected at Step 40!
+[Step 40] ... Total(Clipped): 56.57
+[Step 50] X_max: 3.16 | Flow: 168.91 | Grad: 4.24 | Reg: 7.02
+    -> Warning: Velocity Explosion detected at Step 50!
+[Step 50] ... Total(Clipped): 56.57
+[Step 60] X_max: 3.37 | Flow: 170.07 | Grad: 3.25 | Reg: 7.27
+    -> Warning: Velocity Explosion detected at Step 60!
+[Step 60] ... Total(Clipped): 56.57
+[Step 70] X_max: 3.57 | Flow: 171.22 | Grad: 2.37 | Reg: 7.56
+    -> Warning: Velocity Explosion detected at Step 70!
+[Step 70] ... Total(Clipped): 56.57
+[Step 80] X_max: 3.77 | Flow: 172.36 | Grad: 1.42 | Reg: 7.87
+    -> Warning: Velocity Explosion detected at Step 80!
+[Step 80] ... Total(Clipped): 56.57
+[Step 90] X_max: 3.98 | Flow: 173.46 | Grad: 0.69 | Reg: 8.21
+    -> Warning: Velocity Explosion detected at Step 90!
+[Step 90] ... Total(Clipped): 56.57
+tensor([[ 0.5962, -0.0286, -0.1125,  ...,  1.3792,  0.4326,  0.1983],
+        [-0.4966, -0.0318, -0.2071,  ...,  0.3187,  0.4200,  0.1344],
+        [-0.3448, -0.0781,  0.8468,  ...,  1.3343,  0.4378,  0.2890],
+        ...,
+        [-0.4665,  0.0510, -0.2276,  ...,  0.3351,  0.4190,  1.2817],
+        [-0.4193, -0.0535,  0.8917,  ...,  0.3252,  0.3794,  1.2001],
+        [ 0.5318,  0.0362, -0.1943,  ...,  0.3648,  0.4445,  1.2276]])
+[0.39718798 0.3656764  0.37873664 0.3469674  0.40173382 0.4078877
+ 0.36396527 0.35596627 0.39986807 0.398126   0.3958067  0.36059457
+ 0.40781552 0.3446481  0.37578857 0.3733765  0.40111533 0.39609534
+ 0.3549767  0.38702428 0.40820724 0.35454378 0.34707046 0.38415867
+ 0.4046819  0.36286232 0.3454624  0.3911475  0.35840926 0.41220674
+ 0.39367294 0.38607594 0.4116707  0.33948377 0.41660824 0.41478375
+ 0.3806024  0.41487652 0.38813755 0.3722323  0.34078258 0.40474373
+ 0.36151198 0.41590732 0.36647013 0.40977404 0.35520348 0.3560178
+ 0.40856802 0.3843545  0.34293696 0.33747372 0.3629654  0.3887148
+ 0.39523977 0.35940915 0.34073105 0.3772626  0.35761556 0.3755927
+ 0.40450665 0.3616872  0.35405928 0.36328495 0.36287263 0.39753845
+ 0.3708098  0.4117738  0.34900838 0.4019812  0.37731415 0.39059085
+ 0.40753722 0.36124396 0.4069909  0.3473694  0.40798044 0.35565704
+ 0.3410506  0.40923804 0.3724797  0.41430956 0.40110502 0.34781265
+ 0.37793264 0.38920957 0.40078548 0.34071043 0.38518947 0.41058838
+ 0.38288048 0.41352615 0.364893   0.36415082 0.3398858  0.35160598
+ 0.36662474 0.36081102 0.37741724 0.38834372 0.40844432 0.38610688
+ 0.39356986 0.409939   0.39213705 0.37078917 0.36079043 0.4093205
+ 0.37136644 0.3518843  0.41662887 0.3529151  0.35608998 0.3900136
+ 0.39538407 0.3790562  0.3689028  0.35516223 0.35210076 0.39673442
+ 0.38930234 0.3534614  0.41723704 0.34357604 0.3423391  0.40755782
+ 0.40181628 0.37685028]
+------------------------------
+Result (Valid 128): Mean 0.3791
+Percentiles (100/80/50): 0.4172 | 0.4047 | 0.3783
+------------------------------
